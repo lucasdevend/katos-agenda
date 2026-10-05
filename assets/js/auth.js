@@ -2009,83 +2009,42 @@
 
   ===================================================== */
 
+if (
+  status === "cancelled"
+) {
 
+  /*
+   * Se ainda estiver dentro do período
+   * contratado, continua usando.
+   */
 
   if (
-
-    status === "cancelled"
-
+    subscription.current_period_end
   ) {
 
-
-
-    /*
-
-     * Se ainda estiver dentro do período
-
-     * contratado, continua usando.
-
-     */
+    const periodEnd =
+      new Date(
+        subscription
+          .current_period_end
+      );
 
     if (
-
-      subscription.current_period_end
-
+      periodEnd.getTime() >
+      Date.now()
     ) {
 
-
-
-      const periodEnd =
-
-        new Date(
-
-          subscription
-
-            .current_period_end
-
-        );
-
-
-
-
-
-      if (
-
-        periodEnd.getTime() >
-
-        Date.now()
-
-      ) {
-
-
-
-        return;
-
-      }
-
-
+      return;
 
     }
 
-
-
-
-
-    window.location.replace(
-
-      "manage-plan.html?reason=cancelled"
-
-    );
-
-
-
-    return;
-
   }
 
+  window.location.replace(
+    "trial-expired.html?reason=cancelled"
+  );
 
-
-
+  return;
+}
 
   /* =====================================================
 
