@@ -664,17 +664,26 @@ body {
 /* DARK MODE */
 
 html[data-theme="dark"] #paymentSection {
-  background: #101827;
-  border-color: #263244;
-  box-shadow: none;
+  background: #ffffff;
+  color: #111827;
+  border-color: #dbe3ef;
+}
+
+html[data-theme="dark"] #paymentSection h2,
+html[data-theme="dark"] #paymentSection label {
+  color: #111827;
 }
 
 html[data-theme="dark"] #form-checkout input,
 html[data-theme="dark"] #form-checkout select,
 html[data-theme="dark"] .mp-field {
-  background: #111827;
-  color: #f8fafc;
-  border-color: #334155;
+  background: #ffffff;
+  color: #111827;
+  border-color: #cfd8e6;
+}
+
+html[data-theme="dark"] #form-checkout input::placeholder {
+  color: #6b7280;
 }
 
 
