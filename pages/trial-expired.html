@@ -269,15 +269,101 @@
       o acesso será restaurado.
     </p>
 
+    <section id="paymentSection" style="display:none;">
+  <h2>Dados de pagamento</h2>
+
+  <form id="form-checkout">
+
+    <div>
+      <label>Número do cartão</label>
+      <div
+        id="form-checkout__cardNumber"
+        class="mp-field"
+      ></div>
+    </div>
+
+    <div>
+      <label>Validade</label>
+      <div
+        id="form-checkout__expirationDate"
+        class="mp-field"
+      ></div>
+    </div>
+
+    <div>
+      <label>CVV</label>
+      <div
+        id="form-checkout__securityCode"
+        class="mp-field"
+      ></div>
+    </div>
+
+    <div>
+      <label>Nome no cartão</label>
+      <input
+        type="text"
+        id="form-checkout__cardholderName"
+      >
+    </div>
+
+    <div>
+      <label>E-mail</label>
+      <input
+        type="email"
+        id="form-checkout__cardholderEmail"
+      >
+    </div>
+
+    <div>
+      <label>Tipo de documento</label>
+      <select
+        id="form-checkout__identificationType"
+      ></select>
+    </div>
+
+    <div>
+      <label>CPF</label>
+      <input
+        type="text"
+        id="form-checkout__identificationNumber"
+      >
+    </div>
+
+    <select
+      id="form-checkout__issuer"
+      style="display:none;"
+    ></select>
+
+    <select
+      id="form-checkout__installments"
+      style="display:none;"
+    ></select>
+
+    <button
+      type="submit"
+      id="form-checkout__submit"
+    >
+      Assinar plano
+    </button>
+
+  </form>
+</section>
+
   </main>
 
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="../assets/js/supabase.js"></script>
 
 <script src="../assets/js/theme.js"></script>
 
 <script src="../assets/js/auth.js"></script>
+
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+
+<script>
+  window.MP_PUBLIC_KEY = "APP_USR-77f7da43-6e85-4262-9306-b420ff336924";
+</script>
 
 <script src="../assets/js/trial-expired.js"></script>
 
