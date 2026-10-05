@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Criar conta | Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/auth.css"
+  >
+
+  <!-- Ícone do navegador -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <!-- Ícone ao adicionar na tela inicial do iPhone -->
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+<body>
+
+  <div class="auth-shell">
+
+    <aside class="auth-side">
+
+      <a
+        class="brand"
+        href="../index.html"
+      >
+        <span class="brand-mark">
+          K
+        </span>
+
+        <span>
+          Kato's Agenda
+        </span>
+      </a>
+
+
+      <div class="auth-copy">
+
+        <span class="kicker">
+          Comece com estrutura
+        </span>
+
+        <h1>
+          Transforme sua agenda em uma operação profissional.
+        </h1>
+
+        <p>
+          Cadastre sua barbearia, organize a equipe e tenha uma visão clara dos atendimentos desde o primeiro dia.
+        </p>
+
+
+        <div class="auth-points">
+
+          <span class="auth-point">
+            <i></i>
+            Cadastro rápido da operação
+          </span>
+
+          <span class="auth-point">
+            <i></i>
+            Planos para diferentes tamanhos de equipe
+          </span>
+
+          <span class="auth-point">
+            <i></i>
+            Painel simples e responsivo
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <span class="auth-caption">
+        Kato's Agenda
+      </span>
+
+    </aside>
+
+
+    <main class="auth-main">
+
+      <div class="auth-card card">
+
+        <div class="auth-top">
+
+          <a
+            class="back-link"
+            href="../index.html"
+          >
+            Voltar ao site
+          </a>
+
+          <button
+            class="theme-toggle"
+            data-theme-toggle
+            type="button"
+            aria-label="Alternar tema"
+          ></button>
+
+        </div>
+
+
+        <h2>
+          Crie sua conta
+        </h2>
+
+        <p>
+          Configure os dados iniciais da sua barbearia.
+        </p>
+
+
+        <form
+          id="registerForm"
+          class="auth-form"
+        >
+
+          <div class="input-group">
+
+            <label for="barbershop">
+              Nome da barbearia
+            </label>
+
+            <input
+              id="barbershop"
+              class="input"
+              type="text"
+              placeholder="Ex.: Kato Barber"
+              required
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="name">
+              Seu nome
+            </label>
+
+            <input
+              id="name"
+              class="input"
+              type="text"
+              autocomplete="name"
+              placeholder="Nome do responsável"
+              required
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="email">
+              E-mail
+            </label>
+
+            <input
+              id="email"
+              class="input"
+              type="email"
+              autocomplete="email"
+              placeholder="voce@barbearia.com"
+              required
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="password">
+              Senha
+            </label>
+
+            <div class="password-wrap">
+
+              <input
+                id="password"
+                class="input"
+                type="password"
+                minlength="6"
+                autocomplete="new-password"
+                placeholder="Crie uma senha"
+                required
+              >
+
+              <button
+                class="password-toggle"
+                type="button"
+                data-password-toggle
+                aria-label="Mostrar senha"
+              >
+                Ver
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="plan">
+              Plano
+            </label>
+
+            <select
+              id="plan"
+              class="select"
+              required
+            >
+
+              <option value="starter">
+                Starter - R$ 21,90 - 1 profissional
+              </option>
+
+              <option value="business">
+                Business - R$ 69,90 - até 5 profissionais
+              </option>
+
+              <option value="platinum">
+                Platinum - R$ 149,90 - até 8 profissionais
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div
+            id="authMessage"
+            class="auth-message"
+            hidden
+          ></div>
+
+
+          <button
+            class="btn btn-primary full"
+            id="registerSubmit"
+            type="submit"
+          >
+            Criar conta e continuar
+          </button>
+
+        </form>
+
+
+        <div class="auth-footer">
+          Já possui uma conta?
+          <a href="login.html">
+            Entrar
+          </a>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
+
+  <script src="../assets/js/supabase.js"></script>
+
+  <script src="../assets/js/theme.js"></script>
+
+  <script src="../assets/js/storage.js"></script>
+
+  <script src="../assets/js/auth.js"></script>
+
+  <script src="../assets/js/pwa.js"></script>
+
+</body>
+
+</html>

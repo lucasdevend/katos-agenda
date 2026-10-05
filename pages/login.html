@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Entrar | Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/auth.css"
+  >
+
+  <!-- PWA -->
+
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+</head>
+
+<body>
+
+  <div class="auth-shell">
+
+    <aside class="auth-side">
+
+      <a
+        class="brand"
+        href="../index.html"
+      >
+        <span class="brand-mark">
+          K
+        </span>
+
+        <span>
+          Kato's Agenda
+        </span>
+      </a>
+
+
+      <div class="auth-copy">
+
+        <span class="kicker">
+          Gestão profissional
+        </span>
+
+        <h1>
+          Tenha a operação da sua barbearia na palma da mão.
+        </h1>
+
+        <p>
+          Agenda, clientes, profissionais e suporte reunidos em uma experiência simples e objetiva.
+        </p>
+
+
+        <div class="auth-points">
+
+          <span class="auth-point">
+            <i></i>
+            Visão rápida da agenda do dia
+          </span>
+
+          <span class="auth-point">
+            <i></i>
+            Controle de clientes e equipe
+          </span>
+
+          <span class="auth-point">
+            <i></i>
+            Lembretes e confirmações organizados
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <span class="auth-caption">
+        Kato's Agenda
+      </span>
+
+    </aside>
+
+
+    <main class="auth-main">
+
+      <div class="auth-card card">
+
+        <div class="auth-top">
+
+          <a
+            class="back-link"
+            href="../index.html"
+          >
+            Voltar ao site
+          </a>
+
+          <button
+            class="theme-toggle"
+            data-theme-toggle
+            type="button"
+            aria-label="Alternar tema"
+          ></button>
+
+        </div>
+
+
+        <h2>
+          Bem-vindo de volta
+        </h2>
+
+        <p>
+          Entre com seus dados para acessar sua barbearia.
+        </p>
+
+
+        <form
+          id="loginForm"
+          class="auth-form"
+        >
+
+          <div class="input-group">
+
+            <label for="email">
+              E-mail
+            </label>
+
+            <input
+              id="email"
+              class="input"
+              type="email"
+              autocomplete="email"
+              placeholder="voce@barbearia.com"
+              required
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="password">
+              Senha
+            </label>
+
+            <div class="password-wrap">
+
+              <input
+                id="password"
+                class="input"
+                type="password"
+                autocomplete="current-password"
+                placeholder="Digite sua senha"
+                required
+              >
+
+              <button
+                class="password-toggle"
+                type="button"
+                data-password-toggle
+                aria-label="Mostrar senha"
+              >
+                Ver
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="authMessage"
+            class="auth-message"
+            hidden
+          ></div>
+
+          <div class="auth-helper">
+            <a href="forgot-password.html">
+              Esqueci minha senha
+            </a>
+          </div>
+
+
+          <button
+            class="btn btn-primary full"
+            id="loginSubmit"
+            type="submit"
+          >
+            Entrar na plataforma
+          </button>
+
+        </form>
+
+
+        <div class="auth-footer">
+          Ainda não tem uma conta?
+          <a href="register.html">
+            Criar conta
+          </a>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
+
+  <script src="../assets/js/supabase.js"></script>
+
+  <script src="../assets/js/theme.js"></script>
+
+  <script src="../assets/js/storage.js"></script>
+
+  <script src="../assets/js/auth.js"></script>
+
+  <script src="../assets/js/pwa.js"></script>
+
+</body>
+
+</html>

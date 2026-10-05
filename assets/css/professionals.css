@@ -1,0 +1,1705 @@
+/* =========================================================
+
+   RESUMO DO PLANO
+
+========================================================= */
+
+.professionals-overview-main {
+
+  padding: 18px 20px;
+
+}
+
+.professionals-overview-label {
+
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+}
+
+.professionals-overview-main strong {
+
+  display: block;
+
+  font-size: 17px;
+
+  font-weight: 900;
+
+}
+
+.professionals-overview-main p {
+
+  margin: 4px 0 0;
+
+  color: var(--muted);
+
+  font-size: 9px;
+
+}
+
+/* =========================================================
+
+   PAINEL
+
+========================================================= */
+
+.professionals-panel {
+
+  padding: 22px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  background: var(--surface);
+
+}
+
+.professionals-panel-header {
+
+  margin-bottom: 20px;
+
+}
+
+.professionals-panel-header h2 {
+
+  margin: 0;
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+}
+
+.professionals-panel-header p {
+
+  margin: 6px 0 0;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+}
+
+/* =========================================================
+
+   GRID
+
+========================================================= */
+
+.professionals-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+
+}
+
+/* =========================================================
+
+   CARD
+
+========================================================= */
+
+.professional-card {
+
+  padding: 20px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  background: var(--surface-2);
+
+  transition:
+
+    transform 0.18s ease,
+
+    border-color 0.18s ease,
+
+    box-shadow 0.18s ease;
+
+}
+
+.professional-card:hover {
+
+  transform: translateY(-2px);
+
+  border-color:
+
+    color-mix(
+
+      in srgb,
+
+      var(--primary) 38%,
+
+      var(--border)
+
+    );
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+.professional-card.inactive {
+
+  opacity: 0.65;
+
+}
+
+/* =========================================================
+
+   TOPO
+
+========================================================= */
+
+.professional-card-top {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  min-height: 58px;
+
+  margin-bottom: 18px;
+
+}
+
+.professional-card-user {
+
+  display: flex;
+
+  align-items: center;
+
+  min-width: 0;
+
+  gap: 12px;
+
+}
+
+.professional-status {
+
+  flex-shrink: 0;
+
+  align-self: center;
+
+}
+
+.professional-card {
+
+  display: flex;
+
+  flex-direction: column;
+
+  height: 100%;
+
+}
+
+.professional-card-meta {
+
+  width: 100%;
+
+}
+
+.professional-card-actions {
+
+  margin-top: auto;
+
+}
+
+.professional-card-avatar {
+
+  width: 52px;
+
+  height: 52px;
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background: var(--primary-soft);
+
+  color: var(--primary);
+
+  font-size: 16px;
+
+  font-weight: 900;
+
+}
+
+.professional-card-info {
+
+  min-width: 0;
+
+}
+
+.professional-card-info strong {
+
+  display: block;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+}
+
+.professional-card-info span {
+
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+}
+
+/* =========================================================
+
+   STATUS
+
+========================================================= */
+
+.professional-status {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+}
+
+.professional-status.active {
+
+  background: rgba(34, 197, 94, 0.12);
+
+  color: #22c55e;
+
+}
+
+.professional-status.inactive {
+
+  background: rgba(148, 163, 184, 0.12);
+
+  color: var(--muted);
+
+}
+
+/* =========================================================
+
+   DADOS
+
+========================================================= */
+
+.professional-card-meta {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  margin-bottom: 18px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+}
+
+.professional-card-meta div {
+
+  padding: 14px 16px;
+
+}
+
+.professional-card-meta div + div {
+
+  border-left: 1px solid var(--border);
+
+}
+
+.professional-card-meta span {
+
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.05em;
+
+}
+
+.professional-card-meta strong {
+
+  font-size: 16px;
+
+  font-weight: 800;
+
+}
+
+/* =========================================================
+
+   BOTÕES
+
+========================================================= */
+
+.professional-card-actions {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+
+}
+
+.professional-action {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 42px;
+
+  padding: 10px 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: var(--text);
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+
+    border-color 0.15s ease,
+
+    color 0.15s ease,
+
+background 0.15s ease;
+
+}
+
+.professional-action:hover {
+
+  border-color: var(--primary);
+
+  color: var(--primary);
+
+  background: var(--primary-soft);
+
+}
+
+.professional-action.danger:hover {
+
+  border-color: rgba(239, 68, 68, 0.5);
+
+  color: #ef4444;
+
+  background:
+
+    rgba(239, 68, 68, 0.07);
+
+}
+
+/* =========================================================
+
+   VAZIO
+
+========================================================= */
+
+.professionals-empty {
+
+  grid-column: 1 / -1;
+
+  display: grid;
+
+  justify-items: start;
+
+  gap: 8px;
+
+  padding: 26px;
+
+  border: 1px dashed var(--border);
+
+  border-radius: 14px;
+
+}
+
+.professionals-empty strong {
+
+  font-size: 18px;
+
+}
+
+.professionals-empty span {
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+}
+
+/* =========================================================
+
+   MODAL
+
+========================================================= */
+
+.professional-modal {
+
+  width:
+
+    min(
+
+      560px,
+
+      calc(100% - 30px)
+
+    );
+
+  padding: 22px;
+
+}
+
+.professional-modal-head {
+
+  padding-right: 45px;
+
+  margin-bottom: 18px;
+
+}
+
+.professional-modal-head h2 {
+
+  margin: 0;
+
+  font-size: 18px;
+
+  font-weight: 900;
+
+}
+
+.professional-modal-head p {
+
+  margin: 5px 0 0;
+
+  color: var(--muted);
+
+  font-size: 9px;
+
+}
+
+.professional-form {
+
+  display: grid;
+
+  gap: 14px;
+
+}
+
+.professional-form-grid {
+
+  display: grid;
+
+  grid-template-columns:
+
+    1fr 1fr;
+
+  gap: 12px;
+
+}
+
+.professional-form-footer {
+
+  padding-top: 2px;
+
+}
+
+/* =========================================================
+
+   RESPONSIVO
+
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .professionals-grid {
+
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+}
+
+@media (max-width: 760px) {
+
+  .professionals-overview {
+
+    display: block;
+
+  }
+
+  .professionals-panel {
+
+    padding: 16px;
+
+  }
+
+  .professionals-panel-header h2 {
+
+    font-size: 20px;
+
+  }
+
+  .professionals-panel-header p {
+
+    font-size: 13px;
+
+  }
+
+  .professionals-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+  }
+
+  .professional-form-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .professional-card {
+
+    padding: 18px;
+
+  }
+
+  .professional-card-info strong {
+
+    font-size: 17px;
+
+  }
+
+  .professional-card-info span {
+
+    font-size: 13px;
+
+  }
+
+  .professional-card-meta {
+
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+  .professional-card-actions {
+
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+}
+
+@media (max-width: 520px) {
+
+  .professional-card-top {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+  }
+
+  .professional-status {
+
+    align-self: flex-start;
+
+  }
+
+  .professional-card-meta {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .professional-card-meta div + div {
+
+    border-left: 0;
+
+    border-top: 1px solid var(--border);
+
+  }
+
+  .professional-card-actions {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .professional-action {
+
+    width: 100%;
+
+    min-height: 46px;
+
+    font-size: 14px;
+
+  }
+
+}
+
+/* =========================================================
+
+   MENU DO PLANO
+
+========================================================= */
+
+.plan-menu {
+
+  position: relative;
+
+}
+
+.plan-menu-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 0;
+
+  cursor: pointer;
+
+}
+
+.plan-menu-dropdown {
+
+  position: absolute;
+
+  top: calc(100% + 10px);
+
+  right: 0;
+
+  z-index: 9999;
+
+  width: 190px;
+
+  display: none;
+
+  padding: 14px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  background: var(--surface);
+
+  box-shadow:
+
+    0 18px 45px
+
+    rgba(0, 0, 0, 0.22);
+
+}
+
+.plan-menu-dropdown.show {
+
+  display: block;
+
+}
+
+.plan-menu-label {
+
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+}
+
+.plan-menu-dropdown strong {
+
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 13px;
+
+}
+
+.plan-manage-link {
+
+  width: 100%;
+
+  padding: 9px 10px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: var(--primary-soft);
+
+  color: var(--primary);
+
+  font-family: inherit;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+}
+
+.plan-manage-link:hover {
+
+  filter: brightness(1.06);
+
+}
+
+/* =========================================================
+
+   CABEÇALHO - PROFISSIONAIS
+
+========================================================= */
+
+.professionals-page-head {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  width: 100%;
+
+  gap: 24px;
+
+  margin-bottom: 26px;
+
+}
+
+.professionals-page-head > div {
+
+  margin: 0;
+
+  padding: 0;
+
+}
+
+.professionals-page-head h1 {
+
+  margin: 0 0 5px;
+
+  padding: 0;
+
+  font-size: 28px;
+
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  letter-spacing: -0.035em;
+
+}
+
+.professionals-page-head p {
+
+  margin: 0;
+
+  padding: 0;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+}
+
+.professionals-page-head #newProfessionalButton {
+
+  flex-shrink: 0;
+
+  margin: 0;
+
+}
+
+/* TABLET / CELULAR */
+
+@media (max-width: 760px) {
+
+  .professionals-page-head {
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 14px;
+
+  }
+
+  .professionals-page-head #newProfessionalButton {
+
+    width: 100%;
+
+  }
+
+}
+
+/* =========================================================
+
+   PROFISSIONAIS — DESKTOP COMPACTO
+
+========================================================= */
+
+@media (min-width: 1181px) {
+
+  .professionals-grid {
+
+    grid-template-columns:
+
+      repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+
+  }
+
+  .professional-card {
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+  }
+
+  .professional-card-top {
+
+    min-height: 46px;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+  }
+
+  .professional-card-user {
+
+    gap: 9px;
+
+  }
+
+  .professional-card-avatar,
+
+  .professional-avatar {
+
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+
+  }
+
+  .professional-card-info strong {
+
+    font-size: 15px;
+
+  }
+
+  .professional-card-info span {
+
+    margin-top: 3px;
+
+    font-size: 11px;
+
+  }
+
+  .professional-status {
+
+    padding: 5px 8px;
+
+    font-size: 9px;
+
+  }
+
+  .professional-card-meta {
+
+    margin-bottom: 12px;
+
+    border-radius: 10px;
+
+  }
+
+  .professional-card-meta div {
+
+    padding: 10px 11px;
+
+  }
+
+  .professional-card-meta span {
+
+    margin-bottom: 3px;
+
+    font-size: 8px;
+
+  }
+
+  .professional-card-meta strong {
+
+    font-size: 13px;
+
+  }
+
+  .professional-card-actions {
+
+    gap: 7px;
+
+  }
+
+  .professional-action {
+
+    min-height: 36px;
+
+    padding: 7px 9px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+
+  }
+
+}
+
+/* Notebook / desktop menor */
+
+@media
+
+  (min-width: 761px)
+
+  and (max-width: 1180px) {
+
+  .professionals-grid {
+
+    grid-template-columns:
+
+      repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+
+  }
+
+  .professional-card {
+
+    padding: 15px;
+
+  }
+
+}
+
+/* =========================================================
+
+   FOTO DO PROFISSIONAL
+
+========================================================= */
+
+.professional-card-avatar,
+
+.professional-avatar {
+
+  overflow: hidden;
+
+}
+
+.professional-card-avatar img,
+
+.professional-avatar img {
+
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: inherit;
+
+}
+
+/* =========================================================
+
+   FOTO DO PROFISSIONAL — MODAL
+
+========================================================= */
+
+.professional-photo-editor {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 14px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  background: var(--surface-2);
+
+}
+
+.professional-photo-preview {
+
+  width: 82px;
+
+  height: 82px;
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background: var(--primary-soft);
+
+  color: var(--primary);
+
+  font-size: 20px;
+
+  font-weight: 900;
+
+}
+
+.professional-photo-preview img {
+
+  display: none;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+.professional-photo-preview.has-image img {
+
+  display: block;
+
+}
+
+.professional-photo-preview.has-image span {
+
+  display: none;
+
+}
+
+.professional-photo-content {
+
+  min-width: 0;
+
+  flex: 1;
+
+}
+
+.professional-photo-content strong {
+
+  display: block;
+
+  font-size: 13px;
+
+}
+
+.professional-photo-content > span {
+
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  line-height: 1.5;
+
+}
+
+.professional-photo-actions {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 11px;
+
+}
+
+.professional-photo-actions .btn {
+
+  font-size: 10px;
+
+}
+
+@media (max-width: 520px) {
+
+  .professional-photo-editor {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+  }
+
+  .professional-photo-actions {
+
+    width: 100%;
+
+  }
+
+  .professional-photo-actions .btn {
+
+    flex: 1;
+
+  }
+
+}
+
+/* =========================================================
+
+   AÇÕES DOS PROFISSIONAIS
+
+========================================================= */
+
+.professional-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+}
+
+.professional-action-btn {
+
+  min-height: 34px;
+
+  padding: 7px 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 9px;
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+
+background 0.18s ease,
+
+    border-color 0.18s ease,
+
+    color 0.18s ease,
+
+    transform 0.18s ease;
+
+}
+
+.professional-action-btn:hover {
+
+  transform: translateY(-1px);
+
+  border-color:
+
+    rgba(37, 99, 235, 0.35);
+
+  background:
+
+    rgba(37, 99, 235, 0.08);
+
+}
+
+.professional-action-btn:active {
+
+  transform: translateY(0);
+
+}
+
+/* EDITAR */
+
+.professional-action-btn.edit-professional {
+
+  color: var(--primary);
+
+  border-color:
+
+    rgba(37, 99, 235, 0.25);
+
+  background:
+
+    rgba(37, 99, 235, 0.07);
+
+}
+
+.professional-action-btn.edit-professional:hover {
+
+  border-color:
+
+    rgba(37, 99, 235, 0.45);
+
+  background:
+
+    rgba(37, 99, 235, 0.12);
+
+}
+
+/* EXCLUIR */
+
+.professional-action-btn.danger {
+
+  color: #b42318;
+
+  border-color:
+
+    rgba(180, 35, 24, 0.22);
+
+  background:
+
+    rgba(180, 35, 24, 0.07);
+
+}
+
+.professional-action-btn.danger:hover {
+
+  border-color:
+
+    rgba(180, 35, 24, 0.40);
+
+  background:
+
+    rgba(180, 35, 24, 0.13);
+
+}
+
+/* STATUS */
+
+.professional-actions
+
+.professional-status {
+
+  margin-right: auto;
+
+}
+
+/* DARK */
+
+[data-theme="dark"]
+
+.professional-action-btn {
+
+  background:
+
+    rgba(255, 255, 255, 0.03);
+
+}
+
+[data-theme="dark"]
+
+.professional-action-btn.edit-professional {
+
+  color: #60a5fa;
+
+  background:
+
+    rgba(37, 99, 235, 0.10);
+
+}
+
+[data-theme="dark"]
+
+.professional-action-btn.danger {
+
+  color: #f87171;
+
+  background:
+
+    rgba(239, 68, 68, 0.08);
+
+}
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+
+  .professional-actions {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+
+      1fr 1fr;
+
+    gap: 8px;
+
+  }
+
+  .professional-actions
+
+  .professional-status {
+
+    grid-column:
+
+      1 / -1;
+
+    margin-right: 0;
+
+    margin-bottom: 2px;
+
+  }
+
+  .professional-action-btn {
+
+    width: 100%;
+
+    min-height: 38px;
+
+    font-size: 11px;
+
+  }
+
+}
+
+/* =========================================================
+
+   AÇÕES DO PROFISSIONAL
+
+========================================================= */
+
+.professional-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 14px;
+
+}
+
+.professional-action-btn {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 34px;
+
+  padding: 8px 14px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: var(--text);
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+
+background 0.18s ease,
+
+    border-color 0.18s ease,
+
+    color 0.18s ease,
+
+    transform 0.18s ease;
+
+}
+
+.professional-action-btn:hover {
+
+  transform: translateY(-1px);
+
+}
+
+/* EDITAR */
+
+.professional-action-btn.edit-professional {
+
+  color: #60a5fa;
+
+  background:
+
+    rgba(59, 130, 246, 0.08);
+
+  border-color:
+
+    rgba(59, 130, 246, 0.22);
+
+}
+
+.professional-action-btn.edit-professional:hover {
+
+  background:
+
+    rgba(59, 130, 246, 0.15);
+
+  border-color:
+
+    rgba(59, 130, 246, 0.38);
+
+}
+
+/* EXCLUIR */
+
+.professional-action-btn.delete-professional {
+
+  color: #f87171;
+
+  background:
+
+    rgba(239, 68, 68, 0.07);
+
+  border-color:
+
+    rgba(239, 68, 68, 0.20);
+
+}
+
+.professional-action-btn.delete-professional:hover {
+
+  background:
+
+    rgba(239, 68, 68, 0.14);
+
+  border-color:
+
+    rgba(239, 68, 68, 0.38);
+
+}
+
+/* BOTÃO NOVO PROFISSIONAL NO LIMITE */
+
+#newProfessionalButton.limit-reached {
+
+  opacity: 0.48;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+}
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+
+  .professional-actions {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+  .professional-action-btn {
+
+    width: 100%;
+
+    min-height: 38px;
+
+  }
+
+}
+
+/* =========================================================
+   KATO'S AGENDA — AÇÕES DOS CARDS (CORREÇÃO FINAL)
+========================================================= */
+
+.professional-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 2px;
+}
+
+.professional-action-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none;
+  transition:
+    transform 0.16s ease,
+    border-color 0.16s ease,
+    background 0.16s ease,
+    color 0.16s ease;
+}
+
+.professional-action-btn.edit-professional {
+  border-color: rgba(59, 130, 246, 0.28);
+  background: rgba(59, 130, 246, 0.09);
+  color: #60a5fa;
+}
+
+.professional-action-btn.edit-professional:hover {
+  transform: translateY(-1px);
+  border-color: rgba(59, 130, 246, 0.48);
+  background: rgba(59, 130, 246, 0.16);
+}
+
+.professional-action-btn.delete-professional {
+  border-color: rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.08);
+  color: #f87171;
+}
+
+.professional-action-btn.delete-professional:hover {
+  transform: translateY(-1px);
+  border-color: rgba(239, 68, 68, 0.48);
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.professional-action-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+#newProfessionalButton.limit-reached,
+#newProfessionalButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  filter: none !important;
+}
+
+@media (max-width: 520px) {
+  .professional-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .professional-action-btn {
+    width: 100%;
+    min-height: 40px;
+  }
+}

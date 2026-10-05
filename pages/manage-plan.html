@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Gerenciar plano | Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/dashboard.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/manage-plan.css"
+  >
+
+  <!-- Ícone do navegador -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+<body data-protected="true">
+
+  <div class="app-shell">
+
+    <aside class="sidebar">
+
+      <a
+        class="brand"
+        href="dashboard.html"
+      >
+        <span class="brand-mark">
+          K
+        </span>
+
+        <span>
+          Kato's Agenda
+        </span>
+      </a>
+
+
+      <nav class="menu">
+
+        <a href="dashboard.html">
+          Visão geral
+        </a>
+
+        <a href="appointments.html">
+          Agenda
+        </a>
+
+        <a href="clients.html">
+          Clientes
+        </a>
+
+        <a href="professionals.html">
+          Profissionais
+        </a>
+
+        <a href="services.html">
+          Serviços
+        </a>
+
+        <a
+          href="settings.html"
+          class="active"
+        >
+          Configurações
+        </a>
+
+        <a href="tickets.html">
+          Suporte
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          class="btn btn-secondary"
+          data-logout
+        >
+          Sair da conta
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <main class="app-main">
+
+      <header class="app-header">
+
+        <div class="header-left">
+
+          <button
+            class="icon-btn mobile-menu"
+            data-sidebar-toggle
+            aria-label="Abrir menu"
+          ></button>
+
+          <strong
+            class="shop-name"
+            data-shop-name
+          ></strong>
+
+        </div>
+
+
+        <div class="header-right">
+
+          <span
+            class="badge"
+            data-plan
+          ></span>
+
+          <button
+            class="theme-toggle"
+            data-theme-toggle
+            type="button"
+            aria-label="Alternar tema"
+          ></button>
+
+        </div>
+
+      </header>
+
+
+      <section class="app-content">
+
+          <div class="page-head manage-plan-page-head">
+
+            <div>
+
+                <h1 id="managePlanTitle">
+                 Gerenciar plano
+                </h1>
+
+                <p id="managePlanSubtitle">
+                  Altere sua assinatura, consulte limites ou solicite cancelamento.
+                </p>
+
+             </div>
+
+          </div>
+
+
+      <section class="current-plan-card">
+
+          <div>
+
+            <span class="current-plan-caption">
+              Plano atual
+            </span>
+
+            <h2 id="currentPlanName">
+              -
+            </h2>
+
+            <p id="currentPlanPrice">
+              -
+            </p>
+
+          </div>
+
+
+          <div class="current-plan-usage">
+
+            <span>
+              Uso de profissionais
+            </span>
+
+            <strong id="currentPlanUsage">
+              0 de 0
+            </strong>
+
+            <div class="plan-progress">
+
+              <div
+                id="currentPlanProgress"
+                class="plan-progress-value"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="subscriptionStatus"
+            class="subscription-status active"
+          >
+            Ativa
+          </div>
+
+        </section>
+
+
+        <section class="plans-section">
+
+          <div class="plans-section-head">
+
+            <div>
+
+              <span class="manage-plan-eyebrow">
+                Planos
+              </span>
+
+              <h2>
+                Escolha o plano ideal
+              </h2>
+
+              <p>
+                Você pode alterar seu plano quando precisar.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="plans-grid">
+
+            <article
+              class="plan-card"
+              data-plan-card="starter"
+            >
+
+              <span class="plan-card-name">
+                Starter
+              </span>
+
+              <strong class="plan-card-price">
+                R$ 21,90
+              </strong>
+
+              <span class="plan-card-period">
+                por mês
+              </span>
+
+
+              <ul class="plan-card-features">
+
+                <li>
+                  1 profissional
+                </li>
+
+                <li>
+                  Agenda completa
+                </li>
+
+                <li>
+                  Clientes e serviços
+                </li>
+
+                <li>
+                  Suporte online
+                </li>
+
+              </ul>
+
+
+              <button
+                class="btn btn-primary full"
+                type="button"
+                data-change-plan="starter"
+              >
+                Alterar para Starter
+              </button>
+
+            </article>
+
+
+            <article
+              class="plan-card featured"
+              data-plan-card="business"
+            >
+
+              <span class="plan-highlight">
+                Mais escolhido
+              </span>
+
+              <span class="plan-card-name">
+                Business
+              </span>
+
+              <strong class="plan-card-price">
+                R$ 69,90
+              </strong>
+
+              <span class="plan-card-period">
+                por mês
+              </span>
+
+
+              <ul class="plan-card-features">
+
+                <li>
+                  Até 5 profissionais
+                </li>
+
+                <li>
+                  Agenda completa
+                </li>
+
+                <li>
+                  Clientes e serviços
+                </li>
+
+                <li>
+                  Suporte online e WhatsApp
+                </li>
+
+              </ul>
+
+
+              <button
+                class="btn btn-primary full"
+                type="button"
+                data-change-plan="business"
+              >
+                Alterar para Business
+              </button>
+
+            </article>
+
+
+            <article
+              class="plan-card"
+              data-plan-card="platinum"
+            >
+
+              <span class="plan-card-name">
+                Platinum
+              </span>
+
+              <strong class="plan-card-price">
+                R$ 149,90
+              </strong>
+
+              <span class="plan-card-period">
+                por mês
+              </span>
+
+
+              <ul class="plan-card-features">
+
+                <li>
+                  Até 8 profissionais
+                </li>
+
+                <li>
+                  Agenda completa
+                </li>
+
+                <li>
+                  Clientes e serviços
+                </li>
+
+                <li>
+                  Suporte online e WhatsApp
+                </li>
+
+              </ul>
+
+
+              <button
+                class="btn btn-primary full"
+                type="button"
+                data-change-plan="platinum"
+              >
+                Alterar para Platinum
+              </button>
+
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <section class="subscription-section">
+
+          <div class="subscription-info-card">
+
+            <div>
+
+              <span class="manage-plan-eyebrow">
+                Assinatura
+              </span>
+
+              <h2>
+                Gerenciar assinatura
+              </h2>
+
+              <p id="subscriptionDescription">
+                Sua assinatura está ativa.
+              </p>
+
+            </div>
+
+
+            <div
+              id="periodInfo"
+              class="period-info"
+            ></div>
+
+
+            <div class="subscription-actions">
+
+              <button
+                id="reactivateSubscription"
+                class="btn btn-primary"
+                type="button"
+                hidden
+              >
+                Manter assinatura
+              </button>
+
+              <button
+                id="cancelSubscription"
+                class="btn btn-danger"
+                type="button"
+              >
+                Cancelar assinatura
+              </button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/app.js"></script>
+
+  <script src="../assets/js/manage-plan.js"></script>
+
+</body>
+
+</html>

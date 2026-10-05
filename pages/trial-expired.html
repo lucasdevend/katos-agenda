@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Teste encerrado — Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/trial-expired.css"
+  >
+
+</head>
+
+<body>
+
+  <header class="expired-header">
+
+    <a
+      href="../index.html"
+      class="expired-brand"
+    >
+      <span class="expired-brand-mark">
+        K
+      </span>
+
+      <strong>
+        Kato's Agenda
+      </strong>
+    </a>
+
+
+    <div class="expired-header-actions">
+
+      <button
+        type="button"
+        class="theme-toggle"
+        data-theme-toggle
+        aria-label="Alternar tema"
+      ></button>
+
+      <button
+        type="button"
+        class="expired-logout"
+        data-logout
+      >
+        Sair
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <main class="expired-page">
+
+    <section class="expired-hero">
+
+      <span class="expired-badge">
+        PERÍODO GRATUITO ENCERRADO
+      </span>
+
+      <h1>
+        Seu teste grátis terminou
+      </h1>
+
+      <p>
+        Escolha um plano para continuar utilizando
+        sua agenda, clientes, profissionais e serviços.
+      </p>
+
+    </section>
+
+
+    <section class="expired-plans">
+
+      <!-- STARTER -->
+
+      <article class="expired-plan-card">
+
+        <div>
+
+          <span class="expired-plan-name">
+            Starter
+          </span>
+
+          <h2>
+            R$ 21,90
+            <small>/mês</small>
+          </h2>
+
+          <p>
+            Para profissionais autônomos que
+            trabalham sozinhos.
+          </p>
+
+        </div>
+
+
+        <ul>
+
+          <li>
+            1 profissional
+          </li>
+
+          <li>
+            Agenda online
+          </li>
+
+          <li>
+            Cadastro de clientes
+          </li>
+
+          <li>
+            Serviços
+          </li>
+
+        </ul>
+
+
+        <button
+          type="button"
+          class="expired-plan-button"
+          data-select-plan="starter"
+        >
+          Escolher Starter
+        </button>
+
+      </article>
+
+
+      <!-- BUSINESS -->
+
+      <article
+        class="
+          expired-plan-card
+          featured
+        "
+      >
+
+        <span class="expired-popular">
+          MAIS ESCOLHIDO
+        </span>
+
+
+        <div>
+
+          <span class="expired-plan-name">
+            Business
+          </span>
+
+          <h2>
+            R$ 69,90
+            <small>/mês</small>
+          </h2>
+
+          <p>
+            Para estabelecimentos com uma
+            equipe em crescimento.
+          </p>
+
+        </div>
+
+
+        <ul>
+
+          <li>
+            Até 5 profissionais
+          </li>
+
+          <li>
+            Agenda online
+          </li>
+
+          <li>
+            Cadastro de clientes
+          </li>
+
+          <li>
+            Serviços por profissional
+          </li>
+
+        </ul>
+
+
+        <button
+          type="button"
+          class="expired-plan-button primary"
+          data-select-plan="business"
+        >
+          Escolher Business
+        </button>
+
+      </article>
+
+
+      <!-- PLATINUM -->
+
+      <article class="expired-plan-card">
+
+        <div>
+
+          <span class="expired-plan-name">
+            Platinum
+          </span>
+
+          <h2>
+            R$ 149,90
+            <small>/mês</small>
+          </h2>
+
+          <p>
+            Para estabelecimentos com
+            equipes maiores.
+          </p>
+
+        </div>
+
+
+        <ul>
+
+          <li>
+            Até 8 profissionais
+          </li>
+
+          <li>
+            Agenda online
+          </li>
+
+          <li>
+            Cadastro de clientes
+          </li>
+
+          <li>
+            Serviços por profissional
+          </li>
+
+        </ul>
+
+
+        <button
+          type="button"
+          class="expired-plan-button"
+          data-select-plan="platinum"
+        >
+          Escolher Platinum
+        </button>
+
+      </article>
+
+    </section>
+
+
+    <p class="expired-note">
+      Seus dados continuam salvos.
+      Após regularizar sua assinatura,
+      o acesso será restaurado.
+    </p>
+
+  </main>
+
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+
+<script src="../assets/js/auth.js"></script>
+
+<script src="../assets/js/trial-expired.js"></script>
+
+</body>
+
+</html>

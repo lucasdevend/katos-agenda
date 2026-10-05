@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Profissionais | Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/dashboard.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/professionals.css"
+  >
+
+  <!-- Ícone do navegador -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+<body data-protected="true">
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <a
+        class="brand"
+        href="dashboard.html"
+      >
+        <span class="brand-mark">
+          K
+        </span>
+
+        <span>
+          Kato's Agenda
+        </span>
+      </a>
+
+
+      <nav class="menu">
+
+        <a href="dashboard.html">
+          Visão geral
+        </a>
+
+        <a href="appointments.html">
+          Agenda
+        </a>
+
+        <a href="clients.html">
+          Clientes
+        </a>
+
+        <a
+          href="professionals.html"
+          class="active"
+        >
+          Profissionais
+        </a>
+
+        <a href="services.html">
+          Serviços
+        </a>
+
+        <a href="settings.html">
+          Configurações
+        </a>
+
+
+        <a href="tickets.html">
+          Suporte
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          class="btn btn-secondary"
+          data-logout
+        >
+          Sair da conta
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="app-main">
+
+      <!-- HEADER -->
+      <header class="app-header">
+
+  <div class="header-left">
+
+    <button
+      class="icon-btn mobile-menu"
+      data-sidebar-toggle
+      aria-label="Abrir menu"
+    ></button>
+
+    <strong
+      class="shop-name"
+      data-shop-name
+    ></strong>
+
+  </div>
+
+
+  <div class="header-right">
+
+    <!-- PLANO -->
+    <div class="plan-menu">
+
+      <button
+        type="button"
+        class="badge plan-menu-button"
+        id="planMenuButton"
+      >
+        <span data-plan></span>
+      </button>
+
+
+      <div
+        class="plan-menu-dropdown"
+        id="planMenuDropdown"
+      >
+
+        <span class="plan-menu-label">
+          Plano atual
+        </span>
+
+        <strong data-plan></strong>
+
+        <button
+          type="button"
+          class="plan-manage-link"
+          id="managePlanButton"
+        >
+          Gerenciar
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- TEMA -->
+    <button
+      class="theme-toggle"
+      data-theme-toggle
+      type="button"
+      aria-label="Alternar tema"
+    ></button>
+
+  </div>
+
+</header>
+
+
+      <!-- CONTEÚDO -->
+      <section class="app-content">
+
+        <!-- TOPO -->
+        <div class="page-head professionals-page-head">
+
+          <div>
+
+            <h1>
+              Profissionais
+            </h1>
+
+            <p>
+              Gerencie sua equipe e acompanhe o limite disponível no plano.
+            </p>
+
+          </div>
+
+
+            <button
+             class="btn btn-primary"
+             type="button"
+             id="newProfessionalButton"
+            >
+              Novo profissional
+            </button>
+
+        </div>
+        
+        <div class="professionals-overview">
+
+          <div class="professionals-overview-main">
+
+              <span class="professionals-overview-label">
+                 Uso do plano
+              </span>
+
+               <strong id="professionalCounter">
+                 0 profissionais utilizados
+              </strong>
+
+              <p>
+                Quantidade de profissionais cadastrados no plano atual.
+              </p>
+
+           </div>
+
+        </div>
+
+        <!-- EQUIPE -->
+        <div class="professionals-panel">
+
+          <div class="professionals-panel-header">
+
+            <div>
+
+              <h2>
+                Equipe cadastrada
+              </h2>
+
+              <p>
+                Visualize e gerencie os profissionais da sua barbearia.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div
+              id="professionalsBody"
+              class="professionals-grid"
+          ></div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+<!-- MODAL PROFISSIONAL -->
+<div
+  class="modal-backdrop"
+  id="professionalModal"
+>
+
+  <div class="modal card professional-modal">
+
+    <button
+      class="modal-close-btn"
+      type="button"
+      id="closeProfessionalModal"
+      aria-label="Fechar"
+    ></button>
+
+
+    <div class="professional-modal-head">
+
+      <div>
+
+        <h2 id="professionalModalTitle">
+          Novo profissional
+        </h2>
+
+        <p>
+          Cadastre ou edite os dados do profissional.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <form
+      id="professionalForm"
+      class="professional-form"
+    >
+
+      <input
+        type="hidden"
+        id="professionalEditId"
+      >
+
+
+      <!-- FOTO -->
+      <div class="professional-photo-editor">
+
+        <div
+          class="professional-photo-preview"
+          id="professionalPhotoPreview"
+        >
+
+          <span
+            id="professionalPhotoInitials"
+          >
+            PR
+          </span>
+
+          <img
+            id="professionalPhotoImage"
+            alt="Foto do profissional"
+          >
+
+        </div>
+
+
+        <div class="professional-photo-content">
+
+          <strong>
+            Foto do profissional
+          </strong>
+
+          <span>
+            Essa foto poderá aparecer para o cliente na escolha do profissional.
+          </span>
+
+
+          <div class="professional-photo-actions">
+
+            <label
+              class="btn btn-secondary"
+              for="professionalPhoto"
+            >
+              Escolher foto
+            </label>
+
+            <input
+              type="file"
+              id="professionalPhoto"
+              accept="image/png,image/jpeg,image/webp"
+              hidden
+            >
+
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="removeProfessionalPhoto"
+            >
+              Remover foto
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- DADOS -->
+      <div class="professional-form-grid">
+
+        <div class="input-group">
+
+          <label for="professionalName">
+            Nome
+          </label>
+
+          <input
+            id="professionalName"
+            class="input"
+            type="text"
+            placeholder="Nome do profissional"
+            required
+          >
+
+        </div>
+
+        <div class="input-group">
+
+          <label for="professionalPhone">
+            Telefone
+          </label>
+
+          <input
+            id="professionalPhone"
+            class="input"
+            type="tel"
+            placeholder="(11) 99999-9999"
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label for="professionalRole">
+            Cargo / função
+          </label>
+
+          <input
+            id="professionalRole"
+            class="input"
+            type="text"
+            placeholder="Ex.: Barbeiro"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="professional-form-footer">
+
+        <button
+          class="btn btn-primary full"
+          type="submit"
+          id="saveProfessionalButton"
+        >
+          Salvar profissional
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/app.js"></script>
+
+<!-- JS específico da página -->
+  <script src="../assets/js/professionals.js"></script>
+  <script src="../assets/js/realtime-notifications.js"></script>
+  <script src="../assets/js/pwa.js"></script>
+</body>
+
+</html>

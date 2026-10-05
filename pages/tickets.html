@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Suporte | Kato's Agenda</title>
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/dashboard.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/tickets.css"
+  >
+
+  <!-- ÍCONE DO KATO'S AGENDA -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+
+<body data-protected="true">
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <a
+        class="brand"
+        href="dashboard.html"
+      >
+        <span class="brand-mark">
+          K
+        </span>
+
+        <span>
+          Kato's Agenda
+        </span>
+      </a>
+
+
+      <nav class="menu">
+
+        <a href="dashboard.html">
+          Visão geral
+        </a>
+
+        <a href="appointments.html">
+          Agenda
+        </a>
+
+        <a href="clients.html">
+          Clientes
+        </a>
+
+        <a href="professionals.html">
+          Profissionais
+        </a>
+
+        <a href="services.html">
+          Serviços
+        </a>
+
+
+        <a href="settings.html">
+          Configurações
+        </a>
+
+        <a
+          href="tickets.html"
+          class="active"
+        >
+          Suporte
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          class="btn btn-secondary"
+          data-logout
+        >
+          Sair da conta
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- PRINCIPAL -->
+    <main class="app-main">
+
+      <!-- HEADER -->
+      <header class="app-header">
+
+        <div class="header-left">
+
+          <button
+            class="icon-btn mobile-menu"
+            data-sidebar-toggle
+            aria-label="Abrir menu"
+          ></button>
+
+          <strong
+            class="shop-name"
+            data-shop-name
+          ></strong>
+
+        </div>
+
+
+        <div class="header-right">
+
+          <span
+            class="badge"
+            data-plan
+          ></span>
+
+          <button
+            class="theme-toggle"
+            data-theme-toggle
+            type="button"
+            aria-label="Alternar tema"
+          ></button>
+
+        </div>
+
+      </header>
+
+
+      <!-- CONTEÚDO -->
+      <section class="app-content">
+
+        <!-- TOPO -->
+        <div class="page-head tickets-page-head">
+
+          <div>
+
+            <h1>
+              Suporte
+            </h1>
+
+            <p>
+              Abra chamados e acompanhe as respostas da nossa equipe.
+            </p>
+
+          </div>
+
+
+          <button
+            class="btn btn-primary"
+            type="button"
+            onclick="openModal('#ticketModal')"
+          >
+            Abrir chamado
+          </button>
+
+        </div>
+
+
+        <!-- RESUMO -->
+        <div class="tickets-stats">
+
+          <article class="ticket-stat-card">
+
+            <span class="ticket-stat-label">
+              Chamados abertos
+            </span>
+
+            <strong id="ticketsOpenCount">
+              0
+            </strong>
+
+            <span class="ticket-stat-description">
+              Aguardando análise
+            </span>
+
+          </article>
+
+
+          <article class="ticket-stat-card">
+
+            <span class="ticket-stat-label">
+              Em andamento
+            </span>
+
+            <strong id="ticketsProgressCount">
+              0
+            </strong>
+
+            <span class="ticket-stat-description">
+              Em atendimento
+            </span>
+
+          </article>
+
+
+          <article class="ticket-stat-card">
+
+            <span class="ticket-stat-label">
+              Resolvidos
+            </span>
+
+            <strong id="ticketsResolvedCount">
+              0
+            </strong>
+
+            <span class="ticket-stat-description">
+              Chamados finalizados
+            </span>
+
+          </article>
+
+        </div>
+
+
+        <!-- ÁREA PRINCIPAL -->
+        <div class="tickets-layout">
+
+          <!-- LISTA -->
+          <section class="tickets-panel">
+
+            <div class="tickets-panel-header">
+
+              <div>
+
+                <span class="tickets-panel-eyebrow">
+                  Atendimento
+                </span>
+
+                <h2>
+                  Meus chamados
+                </h2>
+
+                <p>
+                  Consulte o histórico das suas solicitações e respostas recebidas.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div
+              id="ticketsList"
+              class="tickets-list"
+            ></div>
+
+          </section>
+
+
+          <!-- LATERAL -->
+          <aside class="support-side">
+
+            <div class="support-side-card">
+
+              <span class="support-side-label">
+                Precisa de ajuda?
+              </span>
+
+              <h3>
+                Nossa equipe está pronta para atender.
+              </h3>
+
+              <p>
+                Descreva o problema com o máximo de detalhes possível para agilizar o atendimento.
+              </p>
+
+              <button
+                class="btn btn-primary full"
+                type="button"
+                onclick="openModal('#ticketModal')"
+              >
+                Novo chamado
+              </button>
+
+            </div>
+
+
+            <div class="support-side-card compact">
+
+              <span class="support-side-label">
+                Dica
+              </span>
+
+              <p>
+                Informe o que aconteceu, quando começou e qual parte do sistema foi afetada.
+              </p>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- MODAL NOVO CHAMADO -->
+  <div
+    class="modal-backdrop"
+    id="ticketModal"
+  >
+
+    <div class="modal card ticket-modal">
+
+      <button
+        class="modal-close-btn"
+        type="button"
+        onclick="closeModal('#ticketModal')"
+        aria-label="Fechar"
+      ></button>
+
+
+      <div class="ticket-modal-head">
+
+        <span class="ticket-modal-eyebrow">
+          Atendimento
+        </span>
+
+        <h2>
+          Abrir chamado
+        </h2>
+
+        <p>
+          Envie sua solicitação para nossa equipe de suporte.
+        </p>
+
+      </div>
+
+
+      <form
+        id="ticketForm"
+        class="ticket-form"
+      >
+
+        <div class="input-group">
+
+          <label for="ticketSubject">
+            Assunto
+          </label>
+
+          <input
+            id="ticketSubject"
+            class="input"
+            type="text"
+            placeholder="Ex.: Problema ao cadastrar cliente"
+            required
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label for="ticketCategory">
+            Categoria
+          </label>
+
+          <select
+            id="ticketCategory"
+            class="select"
+            required
+          >
+            <option value="">
+              Selecione uma categoria
+            </option>
+
+            <option value="Financeiro">
+              Financeiro
+            </option>
+
+            <option value="Conta">
+              Conta
+            </option>
+
+            <option value="Agenda">
+              Agenda
+            </option>
+
+            <option value="Bug">
+              Bug
+            </option>
+
+            <option value="Outros">
+              Outros
+            </option>
+          </select>
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label for="ticketMessage">
+            Mensagem
+          </label>
+
+          <textarea
+            id="ticketMessage"
+            class="textarea"
+            rows="7"
+            placeholder="Explique detalhadamente o que está acontecendo..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <div class="ticket-form-footer">
+
+          <button
+            class="btn btn-primary full"
+            type="submit"
+          >
+            Enviar chamado
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL CONVERSA DO CHAMADO -->
+<div
+  class="modal-backdrop"
+  id="ticketConversationModal"
+>
+
+  <div class="modal card ticket-conversation-modal">
+
+    <button
+      class="modal-close-btn"
+      type="button"
+      onclick="closeModal('#ticketConversationModal')"
+      aria-label="Fechar"
+    ></button>
+
+
+    <div class="conversation-head">
+
+      <div>
+
+        <span class="conversation-label">
+          Atendimento
+        </span>
+
+        <h2 id="conversationTitle">
+          Chamado
+        </h2>
+
+        <p id="conversationProtocol">
+          KA-0000
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="conversationMessages"
+      class="conversation-messages"
+    ></div>
+
+
+    <form
+      id="conversationForm"
+      class="conversation-form"
+    >
+
+      <textarea
+        id="conversationInput"
+        class="textarea"
+        rows="3"
+        placeholder="Digite sua mensagem..."
+      ></textarea>
+
+      <button
+        class="btn btn-primary"
+        type="submit"
+      >
+        Enviar mensagem
+      </button>
+
+    </form>
+
+
+    <div class="conversation-resolution">
+
+      <div>
+
+        <strong>
+          Seu problema foi resolvido?
+        </strong>
+
+        <span>
+          Isso ajuda nossa equipe a saber se o atendimento pode ser encerrado.
+        </span>
+
+      </div>
+
+
+      <div class="conversation-resolution-actions">
+
+        <button
+          id="ticketUnresolvedButton"
+          class="resolution-button unresolved"
+          type="button"
+        >
+          Não resolveu
+        </button>
+
+        <button
+          id="ticketResolvedButton"
+          class="resolution-button resolved"
+          type="button"
+        >
+          Resolvido
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/app.js"></script>
+
+<!-- JS específico da página -->
+  <script src="../assets/js/tickets.js"></script>
+  <script src="../assets/js/realtime-notifications.js"></script>
+  <script src="../assets/js/pwa.js"></script>
+</body>
+
+</html>

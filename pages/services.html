@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Serviços | Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/dashboard.css"
+  >
+
+  <!-- Ícone do navegador -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <!-- Ícone quando adicionar à tela inicial no iPhone -->
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+<body data-protected="true">
+
+  <div class="app-shell">
+
+    <aside class="sidebar">
+
+      <a
+        class="brand"
+        href="dashboard.html"
+      >
+        <span class="brand-mark">K</span>
+        <span>Kato's Agenda</span>
+      </a>
+
+      <nav class="menu">
+
+        <a href="dashboard.html">
+          Visão geral
+        </a>
+
+        <a href="appointments.html">
+          Agenda
+        </a>
+
+        <a href="clients.html">
+          Clientes
+        </a>
+
+        <a href="professionals.html">
+          Profissionais
+        </a>
+
+        <a
+          href="services.html"
+          class="active"
+        >
+          Serviços
+        </a>
+
+        <a href="settings.html">
+          Configurações
+        </a>
+
+        <a href="tickets.html">
+          Suporte
+        </a>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <button
+          class="btn btn-secondary"
+          data-logout
+        >
+          Sair da conta
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <main class="app-main">
+
+      <header class="app-header">
+
+        <div class="header-left">
+
+          <button
+            class="icon-btn mobile-menu"
+            data-sidebar-toggle
+            aria-label="Abrir menu"
+          ></button>
+
+          <strong
+            class="shop-name"
+            data-shop-name
+          ></strong>
+
+        </div>
+
+
+        <div class="header-right">
+
+          <span
+            class="badge"
+            data-plan
+          ></span>
+
+          <button
+            class="theme-toggle"
+            data-theme-toggle
+            type="button"
+            aria-label="Alternar tema"
+          ></button>
+
+        </div>
+
+      </header>
+
+
+      <section class="app-content">
+
+        <div class="page-head">
+
+          <div>
+
+            <h1>
+              Serviços
+            </h1>
+
+            <p>
+              Cadastre os serviços oferecidos por cada profissional.
+            </p>
+
+          </div>
+
+
+          <button
+            class="btn btn-primary"
+            id="newServiceButton"
+            type="button"
+          >
+            Novo serviço
+          </button>
+
+        </div>
+
+
+        <div
+          id="servicesProfessionals"
+          class="services-professionals"
+        ></div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- MODAL -->
+  <div
+    class="modal-backdrop"
+    id="serviceModal"
+  >
+
+    <div class="modal card service-modal">
+
+      <button
+        class="modal-close-btn"
+        type="button"
+        onclick="closeModal('#serviceModal')"
+        aria-label="Fechar"
+      ></button>
+
+
+      <div class="modal-head">
+
+        <div>
+
+          <h2 id="serviceModalTitle">
+            Novo serviço
+          </h2>
+
+          <p class="modal-description">
+            Cadastre um serviço para o profissional.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <form
+        id="serviceForm"
+        class="service-form"
+      >
+
+        <input
+          type="hidden"
+          id="serviceEditId"
+        >
+
+
+        <div
+          class="input-group"
+          id="professionalServiceGroup"
+        >
+
+          <label for="serviceProfessionalId">
+            Profissional
+          </label>
+
+          <select
+            id="serviceProfessionalId"
+            class="select"
+            required
+          ></select>
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label for="serviceName">
+            Nome do serviço
+          </label>
+
+          <input
+            id="serviceName"
+            class="input"
+            type="text"
+            placeholder="Ex: Corte degradê"
+            required
+          >
+
+        </div>
+
+
+        <div class="service-form-grid">
+
+          <div class="input-group">
+
+            <label for="servicePrice">
+              Valor
+            </label>
+
+            <input
+              id="servicePrice"
+              class="input"
+              type="number"
+              step="0.01"
+              min="0"
+              placeholder="40,00"
+              required
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="serviceDuration">
+              Duração
+            </label>
+
+            <select
+              id="serviceDuration"
+              class="select"
+              required
+            >
+              <option value="15">15 minutos</option>
+              <option value="20">20 minutos</option>
+              <option value="30">30 minutos</option>
+              <option value="40">40 minutos</option>
+              <option value="45">45 minutos</option>
+              <option value="60">60 minutos</option>
+              <option value="90">90 minutos</option>
+              <option value="120">120 minutos</option>
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="service-form-footer">
+
+          <button
+            class="btn btn-primary full"
+            type="submit"
+          >
+            Salvar serviço
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/app.js"></script>
+
+<!-- JS específico da página -->
+  <script src="../assets/js/services.js"></script>
+  <script src="../assets/js/realtime-notifications.js"></script>
+  <script src="../assets/js/pwa.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,865 @@
+/* =========================================================
+   KATO'S AGENDA
+   GERENCIAR PLANO
+========================================================= */
+
+
+/* =========================================================
+   ESTRUTURA DA PÁGINA
+========================================================= */
+
+body:has(.manage-plan-page-head) .app-content {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  min-width: 0;
+
+  overflow-x: hidden;
+}
+
+.manage-plan-page-head,
+.current-plan-card,
+.plans-section,
+.subscription-section {
+  width: 100%;
+  max-width: 100%;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.manage-plan-page-head {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 28px;
+}
+
+.manage-plan-page-head > div {
+  min-width: 0;
+}
+
+.manage-plan-page-head h1 {
+  margin: 0 0 6px;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.035em;
+}
+
+.manage-plan-page-head p {
+  margin: 0;
+
+  max-width: 620px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   PLANO ATUAL
+========================================================= */
+
+.current-plan-card {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(220px, 320px)
+    auto;
+
+  align-items: center;
+
+  gap: 28px;
+
+  padding: 26px;
+
+  margin-bottom: 32px;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background: var(--card);
+}
+
+.current-plan-card > * {
+  min-width: 0;
+}
+
+.current-plan-caption,
+.manage-plan-eyebrow {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.current-plan-card h2 {
+  margin: 0 0 6px;
+
+  font-size: 27px;
+  font-weight: 800;
+
+  line-height: 1.1;
+}
+
+.current-plan-card p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   USO DO PLANO
+========================================================= */
+
+.current-plan-usage {
+  width: 100%;
+
+  min-width: 0;
+}
+
+.current-plan-usage span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+.current-plan-usage strong {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 14px;
+}
+
+.plan-progress {
+  width: 100%;
+  height: 7px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: var(--surface-soft);
+}
+
+.plan-progress-value {
+  width: 0%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: var(--primary);
+
+  transition:
+    width 0.25s ease;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.subscription-status {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  justify-self: end;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+.subscription-status.active {
+  color: #16803c;
+
+  background:
+    rgba(22, 128, 60, 0.11);
+}
+
+.subscription-status.cancelled {
+  color: #b42318;
+
+  background:
+    rgba(180, 35, 24, 0.11);
+}
+
+.subscription-status.pending {
+  color: #a15c00;
+
+  background:
+    rgba(161, 92, 0, 0.12);
+}
+
+
+/* =========================================================
+   SEÇÃO DOS PLANOS
+========================================================= */
+
+.plans-section {
+  display: block;
+
+  margin-bottom: 30px;
+}
+
+.plans-section-head {
+  display: block;
+
+  width: 100%;
+
+  margin-bottom: 18px;
+}
+
+.plans-section-head h2,
+.subscription-info-card h2 {
+  margin: 0 0 6px;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+.plans-section-head p,
+.subscription-info-card p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   GRID DOS PLANOS
+========================================================= */
+
+.plans-grid {
+  display: grid;
+
+  width: 100%;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   CARD DO PLANO
+========================================================= */
+
+.plan-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  min-width: 0;
+  min-height: 390px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background: var(--card);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.plan-card:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 14px 34px
+    rgba(0, 0, 0, 0.08);
+}
+
+.plan-card.current {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 2px
+    rgba(37, 99, 235, 0.08);
+}
+
+.plan-card.featured {
+  border-color:
+    rgba(37, 99, 235, 0.40);
+}
+
+
+/* =========================================================
+   DESTAQUE BUSINESS
+========================================================= */
+
+.plan-highlight {
+  position: absolute;
+
+  top: 15px;
+  right: 15px;
+
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(37, 99, 235, 0.13);
+
+  color: var(--primary);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   DADOS DOS PLANOS
+========================================================= */
+
+.plan-card-name {
+  display: block;
+
+  margin-bottom: 14px;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.plan-card-price {
+  display: block;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: -0.035em;
+}
+
+.plan-card-period {
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+.plan-card-features {
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
+
+  flex: 1;
+
+  margin: 24px 0;
+  padding: 0;
+
+  list-style: none;
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+.plan-card-features li {
+  position: relative;
+
+  padding-left: 18px;
+
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+.plan-card-features li::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 7px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 999px;
+
+  background: var(--primary);
+}
+
+
+/* =========================================================
+   BOTÕES DOS PLANOS
+========================================================= */
+
+.plan-card .btn {
+  width: 100%;
+
+  min-height: 44px;
+
+  margin-top: auto;
+
+  padding-left: 14px;
+  padding-right: 14px;
+
+  white-space: normal;
+
+  text-align: center;
+}
+
+.plan-card .btn[disabled] {
+  opacity: 0.55;
+
+  cursor: default;
+}
+
+
+/* =========================================================
+   GERENCIAR ASSINATURA
+========================================================= */
+
+.subscription-section {
+  display: block;
+
+  margin-bottom: 28px;
+}
+
+.subscription-info-card {
+  width: 100%;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background: var(--card);
+}
+
+.period-info {
+  margin-top: 18px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.subscription-actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+
+/* =========================================================
+   ESCONDER ELEMENTOS COM HIDDEN
+========================================================= */
+
+.manage-plan-page-head [hidden],
+.subscription-section [hidden],
+.subscription-info-card [hidden],
+button[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   BOTÃO DE PERIGO
+========================================================= */
+
+.btn-danger {
+  border:
+    1px solid
+    rgba(180, 35, 24, 0.25);
+
+  background:
+    rgba(180, 35, 24, 0.08);
+
+  color: #b42318;
+}
+
+.btn-danger:hover {
+  background:
+    rgba(180, 35, 24, 0.14);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .current-plan-card {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(200px, 280px);
+  }
+
+  .subscription-status {
+    justify-self: start;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET MENOR
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .manage-plan-page-head {
+    align-items: flex-start;
+  }
+
+  .current-plan-card {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .subscription-status {
+    justify-self: start;
+  }
+
+  .plans-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .manage-plan-page-head {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+  }
+
+  .manage-plan-page-head .btn {
+    width: 100%;
+  }
+
+  .current-plan-card {
+    padding: 20px;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-card {
+    min-height: auto;
+  }
+
+  .subscription-actions {
+    flex-direction: column;
+  }
+
+  .subscription-actions .btn {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   320px até 430px
+========================================================= */
+
+@media (max-width: 430px) {
+
+  .manage-plan-page-head {
+    margin-bottom: 21px;
+  }
+
+  .manage-plan-page-head h1 {
+    font-size: 25px;
+  }
+
+  .manage-plan-page-head p {
+    font-size: 11px;
+  }
+
+
+  /* PLANO ATUAL */
+
+  .current-plan-card {
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    gap: 17px;
+
+    padding: 17px;
+
+    margin-bottom: 22px;
+
+    border-radius: 14px;
+  }
+
+  .current-plan-caption,
+  .manage-plan-eyebrow {
+    margin-bottom: 5px;
+
+    font-size: 9px;
+  }
+
+  .current-plan-card h2 {
+    margin-bottom: 4px;
+
+    font-size: 23px;
+  }
+
+  .current-plan-card p {
+    font-size: 11px;
+  }
+
+  .current-plan-usage span {
+    font-size: 10px;
+  }
+
+  .current-plan-usage strong {
+    margin-bottom: 8px;
+
+    font-size: 12px;
+  }
+
+  .plan-progress {
+    height: 6px;
+  }
+
+  .subscription-status {
+    justify-self: start;
+
+    padding: 6px 9px;
+
+    font-size: 9px;
+  }
+
+
+  /* TÍTULO PLANOS */
+
+  .plans-section {
+    margin-bottom: 22px;
+  }
+
+  .plans-section-head {
+    margin-bottom: 14px;
+  }
+
+  .plans-section-head h2,
+  .subscription-info-card h2 {
+    font-size: 19px;
+  }
+
+  .plans-section-head p,
+  .subscription-info-card p {
+    font-size: 11px;
+
+    line-height: 1.55;
+  }
+
+
+  /* CARDS */
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+
+    gap: 11px;
+  }
+
+  .plan-card {
+    width: 100%;
+
+    padding: 18px;
+
+    border-radius: 14px;
+  }
+
+  .plan-card:hover {
+    transform: none;
+  }
+
+  .plan-highlight {
+    top: 13px;
+    right: 13px;
+
+    padding: 4px 7px;
+
+    font-size: 7px;
+  }
+
+  .plan-card-name {
+    margin-bottom: 11px;
+
+    font-size: 12px;
+  }
+
+  .plan-card-price {
+    font-size: 27px;
+  }
+
+  .plan-card-period {
+    font-size: 10px;
+  }
+
+  .plan-card-features {
+    gap: 9px;
+
+    margin: 18px 0;
+
+    font-size: 11px;
+  }
+
+  .plan-card-features li {
+    padding-left: 16px;
+  }
+
+  .plan-card-features li::before {
+    top: 6px;
+
+    width: 5px;
+    height: 5px;
+  }
+
+  .plan-card .btn {
+    min-height: 43px;
+
+    font-size: 11px;
+  }
+
+
+  /* ASSINATURA */
+
+  .subscription-info-card {
+    padding: 17px;
+
+    border-radius: 14px;
+  }
+
+  .period-info {
+    margin-top: 14px;
+
+    font-size: 10px;
+  }
+
+  .subscription-actions {
+    gap: 8px;
+
+    margin-top: 17px;
+  }
+
+  .subscription-actions .btn {
+    min-height: 43px;
+  }
+
+}
+
+
+/* =========================================================
+   TELAS MUITO PEQUENAS
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .current-plan-card,
+  .subscription-info-card {
+    padding: 14px;
+  }
+
+  .plan-card {
+    padding: 15px;
+  }
+
+  .current-plan-card h2 {
+    font-size: 21px;
+  }
+
+  .plan-card-price {
+    font-size: 24px;
+  }
+
+}

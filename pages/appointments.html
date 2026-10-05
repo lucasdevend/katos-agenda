@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Agenda | Kato's Agenda</title>
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/dashboard.css"
+  >
+
+  <!-- FAVICON / ÍCONE DO NAVEGADOR -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <!-- ÍCONE IPHONE / IOS -->
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+<body data-protected="true">
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <a
+        href="dashboard.html"
+        class="brand"
+      >
+        <span class="brand-mark">
+          K
+        </span>
+
+        <span>
+          Kato's Agenda
+        </span>
+      </a>
+
+
+      <nav class="menu">
+
+        <a href="dashboard.html">
+          Visão geral
+        </a>
+
+        <a
+          href="appointments.html"
+          class="active"
+        >
+          Agenda
+        </a>
+
+        <a href="clients.html">
+          Clientes
+        </a>
+
+        <a href="professionals.html">
+          Profissionais
+        </a>
+
+        <a href="services.html">
+          Serviços
+        </a>
+
+        <a href="settings.html">
+          Configurações
+        </a>
+
+
+        <a href="tickets.html">
+          Suporte
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          class="btn btn-secondary"
+          data-logout
+        >
+          Sair da conta
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- PRINCIPAL -->
+    <main class="app-main">
+
+      <!-- HEADER -->
+      <header class="app-header">
+
+        <div class="header-left">
+
+          <button
+            class="icon-btn mobile-menu"
+            data-sidebar-toggle
+            aria-label="Abrir menu"
+          ></button>
+
+          <strong
+            class="shop-name"
+            data-shop-name
+          ></strong>
+
+        </div>
+
+
+        <div class="header-right">
+
+          <span
+            class="badge"
+            data-plan
+          ></span>
+
+          <button
+            class="theme-toggle"
+            data-theme-toggle
+            type="button"
+            aria-label="Alternar tema"
+          ></button>
+
+        </div>
+
+      </header>
+
+
+      <!-- CONTEÚDO -->
+      <section class="app-content">
+
+        <!-- CABEÇALHO -->
+        <div class="page-head">
+
+          <div>
+
+            <h1>
+              Agenda
+            </h1>
+
+            <p>
+              Organize os horários e atendimentos da sua barbearia.
+            </p>
+
+          </div>
+
+
+          <button
+            class="btn btn-primary"
+            type="button"
+            onclick="openModal('#appointmentModal')"
+          >
+            Novo agendamento
+          </button>
+
+        </div>
+
+
+        <!-- LISTAGEM -->
+        <div class="card agenda-management-card">
+
+          <div class="agenda-management-header">
+
+            <div>
+
+              <h3>
+                Agendamentos
+              </h3>
+
+              <p>
+                Consulte e gerencie todos os horários cadastrados.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table class="table">
+
+              <thead>
+
+                <tr>
+                  <th>Data</th>
+                  <th>Hora</th>
+                  <th>Cliente</th>
+                  <th>Serviço</th>
+                  <th>Profissional</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+
+              </thead>
+
+
+              <tbody id="appointmentsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- MODAL -->
+  <div
+    class="modal-backdrop"
+    id="appointmentModal"
+  >
+
+    <div class="modal card appointment-modal">
+
+      <!-- TOPO -->
+      <div class="modal-head">
+
+        <div>
+
+          <h2>
+            Novo agendamento
+          </h2>
+
+          <p class="modal-description">
+            Selecione o cliente, profissional, serviço e horário.
+          </p>
+
+        </div>
+
+
+        <button
+           class="modal-close-btn"
+           type="button"
+           id="closeAppointmentModal"
+           aria-label="Fechar"
+        ></button>
+
+      </div>
+
+
+      <!-- FORMULÁRIO -->
+       <form
+  id="appointmentForm"
+  class="appointment-form"
+>
+
+  <!-- BLOCO CLIENTE -->
+  <div class="appointment-section">
+
+    <div class="appointment-section-head">
+      <strong>Cliente</strong>
+      <span>Selecione um cliente existente ou cadastre um novo.</span>
+    </div>
+
+    <div class="input-group full-row">
+      <label for="clientId">Cliente já cadastrado</label>
+
+      <select
+        id="clientId"
+        class="select"
+      >
+        <option value="">
+          Novo cliente
+        </option>
+      </select>
+    </div>
+
+    <div class="booking-divider">
+      <span>ou cadastrar novo cliente</span>
+    </div>
+
+    <div
+      id="newClientFields"
+      class="client-booking-fields"
+    >
+
+      <div class="input-group">
+        <label for="appointmentClientName">Nome do cliente</label>
+        <input
+          id="appointmentClientName"
+          class="input"
+          type="text"
+          placeholder="Nome completo"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="appointmentClientPhone">WhatsApp</label>
+        <input
+          id="appointmentClientPhone"
+          class="input"
+          type="tel"
+          placeholder="11999999999"
+        >
+      </div>
+
+      <div class="input-group full-row">
+        <label for="appointmentClientEmail">E-mail</label>
+        <input
+          id="appointmentClientEmail"
+          class="input"
+          type="email"
+          placeholder="cliente@email.com"
+        >
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- BLOCO AGENDAMENTO -->
+  <div class="appointment-section">
+
+    <div class="appointment-section-head">
+      <strong>Detalhes do agendamento</strong>
+      <span>Escolha o profissional, serviço e data.</span>
+    </div>
+
+    <div class="appointment-form-grid">
+
+      <div class="input-group">
+        <label for="professionalId">Profissional</label>
+        <select
+          id="professionalId"
+          class="select"
+          required
+        ></select>
+      </div>
+
+      <div class="input-group">
+        <label for="serviceId">Serviço</label>
+        <select
+          id="serviceId"
+          class="select"
+          required
+        ></select>
+      </div>
+
+      <div class="input-group">
+        <label for="date">Data</label>
+        <input
+          id="date"
+          type="date"
+          class="input"
+          required
+        >
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- HORÁRIOS -->
+  <div class="time-section">
+
+    <div class="time-section-head">
+
+      <div>
+        <strong>Horários disponíveis</strong>
+        <span id="timeHelp">
+          Selecione um profissional para visualizar os horários.
+        </span>
+      </div>
+
+    </div>
+
+    <div
+      id="timeSlots"
+      class="time-slots"
+    >
+      <div class="time-empty">
+        Selecione um profissional.
+      </div>
+    </div>
+
+    <input
+      id="time"
+      type="hidden"
+      required
+    >
+
+  </div>
+
+
+  <!-- RODAPÉ -->
+  <div class="appointment-form-footer">
+
+    <div class="selected-time-info">
+      <span>Horário selecionado</span>
+      <strong id="selectedTimeText">Nenhum</strong>
+    </div>
+
+    <button
+      class="btn btn-primary appointment-save"
+      type="submit"
+    >
+      Salvar agendamento
+    </button>
+
+  </div>
+
+</form>
+
+    </div>
+
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/app.js"></script>
+
+<!-- JS específico da página -->
+  <script src="../assets/js/appointments.js"></script>
+  <script src="../assets/js/realtime-notifications.js"></script>
+  <script src="../assets/js/pwa.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Visão geral | Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/dashboard.css"
+  >
+
+  <!-- Ícone do navegador -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+<body data-protected="true">
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <a
+        href="dashboard.html"
+        class="brand"
+      >
+        <span class="brand-mark">
+          K
+        </span>
+
+        <span>
+          Kato's Agenda
+        </span>
+      </a>
+
+
+      <nav class="menu">
+
+        <a
+          href="dashboard.html"
+          class="active"
+        >
+          Visão geral
+        </a>
+
+        <a href="appointments.html">
+          Agenda
+        </a>
+
+        <a href="clients.html">
+          Clientes
+        </a>
+
+        <a href="professionals.html">
+          Profissionais
+        </a>
+
+        <a href="services.html">
+          Serviços
+        </a>
+
+        <a href="settings.html">
+          Configurações
+        </a>
+
+
+        <a href="tickets.html">
+          Suporte
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          class="btn btn-secondary"
+          data-logout
+        >
+          Sair da conta
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- PRINCIPAL -->
+    <main class="app-main">
+
+      <!-- HEADER -->
+      <header class="app-header">
+
+        <div class="header-left">
+
+          <button
+            class="icon-btn mobile-menu"
+            data-sidebar-toggle
+            aria-label="Abrir menu"
+          ></button>
+
+          <strong
+            class="shop-name"
+            data-shop-name
+          ></strong>
+
+        </div>
+
+
+        <div class="header-right">
+
+          <span
+            class="badge"
+            data-plan
+          ></span>
+
+          <button
+            class="theme-toggle"
+            data-theme-toggle
+            type="button"
+            aria-label="Alternar tema"
+          ></button>
+
+        </div>
+
+      </header>
+
+
+      <!-- CONTEÚDO -->
+      <section class="app-content">
+
+        <!-- CABEÇALHO -->
+        <div class="page-head">
+
+          <div>
+
+            <h1>
+              Visão geral
+            </h1>
+
+            <p>
+              Acompanhe o desempenho e os atendimentos da sua barbearia.
+            </p>
+
+          </div>
+
+
+          <a
+            href="appointments.html"
+            class="btn btn-primary"
+          >
+            Novo agendamento
+          </a>
+
+        </div>
+
+
+        <!-- FATURAMENTO PRINCIPAL -->
+        <div class="revenue-hero">
+
+          <div class="revenue-hero-main">
+
+            <span class="revenue-label">
+              Faturamento previsto hoje
+            </span>
+
+            <strong
+              id="revenueToday"
+              class="revenue-value"
+            >
+              R$ 0,00
+            </strong>
+
+            <span
+              id="revenueTodayDetail"
+              class="revenue-detail"
+            >
+              Nenhum atendimento programado
+            </span>
+
+          </div>
+
+
+          <div class="revenue-hero-side">
+
+            <span>
+              Previsão do mês
+            </span>
+
+            <strong id="revenueMonth">
+              R$ 0,00
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- INDICADORES -->
+        <div class="stats">
+
+          <div class="stat-card">
+
+            <span>
+              Agendamentos hoje
+            </span>
+
+            <strong id="statToday">
+              0
+            </strong>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <span>
+              Clientes cadastrados
+            </span>
+
+            <strong id="statClients">
+              0
+            </strong>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <span>
+              Profissionais ativos
+            </span>
+
+            <strong id="statProfessionals">
+              0
+            </strong>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <span>
+              Chamados em aberto
+            </span>
+
+            <strong id="statTickets">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- GRID PRINCIPAL -->
+        <div class="dashboard-grid">
+
+          <!-- AGENDA -->
+          <div class="card today-agenda-card">
+
+            <div class="today-agenda-header">
+
+              <div>
+
+                <h3>
+                  Agenda de hoje
+                </h3>
+
+                <p>
+                  Acompanhe os atendimentos programados para hoje.
+                </p>
+
+              </div>
+
+
+              <a
+                href="appointments.html"
+                class="today-agenda-link"
+              >
+                Ver agenda
+              </a>
+
+            </div>
+
+
+            <div
+              id="todayAppointments"
+              class="today-appointments"
+            ></div>
+
+          </div>
+
+
+          <!-- LATERAL -->
+          <aside class="dashboard-side">
+
+            <!-- PLANO -->
+            <div class="subscription-card">
+
+              <div class="subscription-header">
+
+                <div>
+
+                  <span class="subscription-caption">
+                    Plano atual
+                  </span>
+
+
+                  <div class="subscription-plan-row">
+
+                    <strong
+                      class="subscription-plan"
+                      data-plan
+                    >
+                      Starter
+                    </strong>
+
+                    <span
+                       class="subscription-active"
+                       id="subscriptionStatusBadge"
+                    >
+                      Ativo
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <a
+                  href="manage-plan.html"
+                  class="subscription-manage"
+                >
+                  Gerenciar
+                </a>
+
+              </div>
+
+
+              <div class="subscription-meta">
+
+                <span>
+                  <strong id="planPrice">
+                    R$ 21,90
+                  </strong>
+                  /mês
+                </span>
+
+                <span class="meta-separator"></span>
+
+                <span>
+                  <strong id="planUsageText">
+                    0 de 1
+                  </strong>
+                  profissionais
+                </span>
+
+              </div>
+
+
+              <div class="subscription-progress">
+
+                <div
+                  id="planProgressBar"
+                  class="subscription-progress-value"
+                ></div>
+
+              </div>
+
+              <div
+                 id="trialInfo"
+                 class="trial-info"
+                 hidden
+              >
+                <strong id="trialInfoTitle">
+                  Teste grátis
+                </strong>
+
+                <span id="trialInfoText">
+                  —
+                 </span>
+              </div>
+
+            </div>
+
+
+            <!-- RESUMO -->
+            <div class="card summary-card">
+
+              <div class="section-header compact">
+
+                <div>
+
+                  <h3>
+                    Resumo do dia
+                  </h3>
+
+                  <p>
+                    Situação dos atendimentos.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="summary-grid">
+
+                <div class="summary-item">
+
+                  <span class="summary-marker confirmed"></span>
+
+                  <div>
+
+                    <strong id="summaryConfirmed">
+                      0
+                    </strong>
+
+                    <span>
+                      Confirmados
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                  <span class="summary-marker pending"></span>
+
+                  <div>
+
+                    <strong id="summaryPending">
+                      0
+                    </strong>
+
+                    <span>
+                      Pendentes
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                  <span class="summary-marker completed"></span>
+
+                  <div>
+
+                    <strong id="summaryCompleted">
+                      0
+                    </strong>
+
+                    <span>
+                      Concluídos
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                  <span class="summary-marker cancelled"></span>
+
+                  <div>
+
+                    <strong id="summaryCancelled">
+                      0
+                    </strong>
+
+                    <span>
+                      Cancelados
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- PRÓXIMO ATENDIMENTO -->
+            <div class="card next-card">
+
+              <span class="next-label">
+                Próximo atendimento
+              </span>
+
+              <div
+                id="nextAppointment"
+                class="next-content"
+              >
+
+                <strong>
+                  Nenhum atendimento próximo
+                </strong>
+
+                <span>
+                  Sua agenda está livre no momento.
+                </span>
+
+              </div>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+   
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/app.js"></script>
+
+<!-- JS específico da página -->
+<script src="../assets/js/dashboard.js"></script>
+<script src="../assets/js/realtime-notifications.js"></script>
+<script src="/assets/js/pwa.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Configurações | Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/dashboard.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/settings.css"
+  >
+
+  <!-- Ícone do navegador -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+<body data-protected="true">
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <a
+        class="brand"
+        href="dashboard.html"
+      >
+        <span class="brand-mark">
+          K
+        </span>
+
+        <span>
+          Kato's Agenda
+        </span>
+      </a>
+
+
+      <nav class="menu">
+
+        <a href="dashboard.html">
+          Visão geral
+        </a>
+
+        <a href="appointments.html">
+          Agenda
+        </a>
+
+        <a href="clients.html">
+          Clientes
+        </a>
+
+        <a href="professionals.html">
+          Profissionais
+        </a>
+
+        <a href="services.html">
+          Serviços
+        </a>
+
+        <a
+          href="settings.html"
+          class="active"
+        >
+          Configurações
+        </a>
+
+        <a href="tickets.html">
+          Suporte
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          class="btn btn-secondary"
+          data-logout
+        >
+          Sair da conta
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- PRINCIPAL -->
+    <main class="app-main">
+
+      <!-- HEADER -->
+      <header class="app-header">
+
+        <div class="header-left">
+
+          <button
+            class="icon-btn mobile-menu"
+            data-sidebar-toggle
+            aria-label="Abrir menu"
+          ></button>
+
+          <strong
+            class="shop-name"
+            data-shop-name
+          ></strong>
+
+        </div>
+
+
+        <div class="header-right">
+
+          <span
+            class="badge"
+            data-plan
+          ></span>
+
+          <button
+            class="theme-toggle"
+            data-theme-toggle
+            type="button"
+            aria-label="Alternar tema"
+          ></button>
+
+        </div>
+
+      </header>
+
+
+      <!-- CONTEÚDO -->
+      <section class="app-content">
+
+        <!-- TOPO -->
+        <div class="page-head settings-page-head">
+
+          <div>
+
+            <h1>
+              Configurações
+            </h1>
+
+            <p>
+              Personalize os dados e preferências do seu estabelecimento.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- GRID -->
+        <div class="settings-layout">
+
+          <!-- PRINCIPAL -->
+          <div class="settings-main">
+
+            <!-- ESTABELECIMENTO -->
+            <section class="settings-card">
+
+              <div class="settings-card-header">
+
+                <div>
+
+                  <span class="settings-eyebrow">
+                    Estabelecimento
+                  </span>
+
+                  <h2>
+                    Informações da barbearia
+                  </h2>
+
+                  <p>
+                    Esses dados serão utilizados no sistema e futuramente na página pública de agendamento.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="shop-profile-row">
+
+                <div class="shop-photo-preview" id="shopPhotoPreview">
+
+                  <span id="shopPhotoInitial"></span>
+
+                  <img
+                    id="shopPhotoImage"
+                    alt="Foto do estabelecimento"
+                  >
+
+                </div>
+
+
+                <div class="shop-photo-info">
+
+                  <strong>
+                    Foto do estabelecimento
+                  </strong>
+
+                  <span>
+                    PNG ou JPG. Use uma imagem quadrada para melhor resultado.
+                  </span>
+
+                  <div class="shop-photo-actions">
+
+                    <label
+                      class="btn btn-secondary"
+                      for="shopPhoto"
+                    >
+                      Alterar foto
+                    </label>
+
+                    <button
+                      class="btn btn-secondary"
+                      type="button"
+                      id="removeShopPhoto"
+                    >
+                      Remover
+                    </button>
+
+                  </div>
+
+                  <input
+                    id="shopPhoto"
+                    type="file"
+                    accept="image/png,image/jpeg,image/webp"
+                    hidden
+                  >
+
+                </div>
+
+              </div>
+
+
+              <form id="shopForm" class="settings-form">
+
+                <div class="settings-form-grid">
+
+                  <div class="input-group">
+
+                    <label for="shopName">
+                      Nome do estabelecimento
+                    </label>
+
+                    <input
+                      id="shopName"
+                      class="input"
+                      type="text"
+                      required
+                    >
+
+                  </div>
+
+
+                  <div class="input-group">
+
+                    <label for="shopPhone">
+                      Telefone
+                    </label>
+
+                    <input
+                      id="shopPhone"
+                      class="input"
+                      type="text"
+                      placeholder="11999999999"
+                    >
+
+                  </div>
+
+
+                  <div class="input-group">
+
+                    <label for="shopWhatsapp">
+                      WhatsApp
+                    </label>
+
+                    <input
+                      id="shopWhatsapp"
+                      class="input"
+                      type="text"
+                      placeholder="11999999999"
+                    >
+
+                  </div>
+
+
+                  <div class="input-group">
+
+                    <label for="shopEmail">
+                      E-mail comercial
+                    </label>
+
+                    <input
+                      id="shopEmail"
+                      class="input"
+                      type="email"
+                      placeholder="contato@barbearia.com"
+                    >
+
+                  </div>
+
+
+                  <div class="input-group full-width">
+
+                    <label for="shopAddress">
+                      Endereço
+                    </label>
+
+                    <input
+                      id="shopAddress"
+                      class="input"
+                      type="text"
+                      placeholder="Rua, número, bairro, cidade"
+                    >
+
+                  </div>
+
+                </div>
+
+
+                <div class="settings-form-footer">
+
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                  >
+                    Salvar estabelecimento
+                  </button>
+
+                </div>
+
+              </form>
+
+            </section>
+
+
+            <!-- HORÁRIOS -->
+            <section class="settings-card">
+
+              <div class="settings-card-header">
+
+                <div>
+
+                  <span class="settings-eyebrow">
+                    Funcionamento
+                  </span>
+
+                  <h2>
+                    Horários de atendimento
+                  </h2>
+
+                  <p>
+                    Defina os dias e horários em que seu estabelecimento funciona.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <form id="businessHoursForm">
+
+                <div
+                  id="businessHoursList"
+                  class="business-hours-list"
+                ></div>
+
+
+                <div class="settings-form-footer">
+
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                  >
+                    Salvar horários
+                  </button>
+
+                </div>
+
+              </form>
+
+            </section>
+
+
+            <!-- AGENDAMENTO -->
+            <section class="settings-card">
+
+              <div class="settings-card-header">
+
+                <div>
+
+                  <span class="settings-eyebrow">
+                    Agenda
+                  </span>
+
+                  <h2>
+                    Preferências de agendamento
+                  </h2>
+
+                  <p>
+                    Configure como os horários serão disponibilizados aos clientes.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <form id="bookingSettingsForm" class="settings-form">
+
+                <div class="settings-form-grid">
+
+                  <div class="input-group">
+
+                    <label for="bookingInterval">
+                      Intervalo entre horários
+                    </label>
+
+                    <select
+                      id="bookingInterval"
+                      class="select"
+                    >
+                      <option value="15">
+                        15 minutos
+                      </option>
+
+                      <option value="30">
+                        30 minutos
+                      </option>
+
+                      <option value="45">
+                        45 minutos
+                      </option>
+
+                      <option value="60">
+                        60 minutos
+                      </option>
+                    </select>
+
+                  </div>
+
+
+                  <div class="input-group">
+
+                    <label for="minimumNotice">
+                      Antecedência mínima
+                    </label>
+
+                    <select
+                      id="minimumNotice"
+                      class="select"
+                    >
+                      <option value="0">
+                        Sem limite
+                      </option>
+
+                      <option value="30">
+                        30 minutos
+                      </option>
+
+                      <option value="60">
+                        1 hora
+                      </option>
+
+                      <option value="120">
+                        2 horas
+                      </option>
+
+                      <option value="240">
+                        4 horas
+                      </option>
+                    </select>
+
+                  </div>
+
+
+                  <div class="input-group">
+
+                    <label for="maxDaysAhead">
+                      Agendamento futuro
+                    </label>
+
+                    <select
+                      id="maxDaysAhead"
+                      class="select"
+                    >
+                      <option value="7">
+                        Até 7 dias
+                      </option>
+
+                      <option value="15">
+                        Até 15 dias
+                      </option>
+
+                      <option value="30">
+                        Até 30 dias
+                      </option>
+
+                      <option value="60">
+                        Até 60 dias
+                      </option>
+
+                      <option value="90">
+                        Até 90 dias
+                      </option>
+                    </select>
+
+                  </div>
+
+                </div>
+
+
+                <div class="settings-form-footer">
+
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                  >
+                    Salvar preferências
+                  </button>
+
+                </div>
+
+              </form>
+
+            </section>
+
+          </div>
+
+
+          <!-- LATERAL -->
+          <aside class="settings-side">
+
+            <!-- CONTA -->
+            <section class="settings-side-card">
+
+              <span class="settings-eyebrow">
+                Conta
+              </span>
+
+              <h3>
+                Responsável
+              </h3>
+
+              <div class="settings-account-info">
+
+                <div>
+
+                  <span>
+                    Nome
+                  </span>
+
+                  <strong id="accountName">
+                    -
+                  </strong>
+
+                </div>
+
+                <div>
+
+                  <span>
+                    E-mail
+                  </span>
+
+                  <strong id="accountEmail">
+                    -
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- PLANO -->
+            <section class="settings-side-card">
+
+              <span class="settings-eyebrow">
+                Assinatura
+              </span>
+
+              <h3>
+                Seu plano
+              </h3>
+
+              <div class="settings-plan">
+
+                 <strong
+                   class="settings-plan-name"
+                   data-plan
+                  ></strong>
+
+                  <span id="settingsPlanStatus">
+                     -
+                  </span>
+
+                  <span id="settingsPlanLimit">
+                      -
+                  </span>
+
+                  <span id="settingsTrialInfo">
+                     -
+                 </span>
+
+              </div>
+
+
+              <button
+                class="btn btn-secondary full"
+                type="button"
+                id="managePlanSettings"
+              >
+                Gerenciar plano
+              </button>
+
+            </section>
+
+
+            <!-- APARÊNCIA -->
+            <section class="settings-side-card">
+
+              <span class="settings-eyebrow">
+                Aparência
+              </span>
+
+              <h3>
+                Tema do sistema
+              </h3>
+
+              <p class="settings-side-description">
+                Você pode alternar entre tema claro e escuro pelo botão no topo do sistema.
+              </p>
+
+            </section>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/app.js"></script>
+
+<!-- JS específico da página -->
+  <script src="../assets/js/settings.js"></script>
+  <script src="../assets/js/realtime-notifications.js"></script>
+  <script src="../assets/js/pwa.js"></script>
+</body>
+
+</html>

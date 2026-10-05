@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Kato's Agenda: gestão de agenda, clientes, profissionais e lembretes para barbearias."
+  >
+
+  <title>
+    Kato's Agenda | Gestão inteligente para barbearias
+  </title>
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="assets/css/landing.css"
+  >
+
+  <!-- ÍCONE DO NAVEGADOR -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+
+</head>
+
+<body>
+
+  <!-- TOPO -->
+  <header class="topbar">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="Kato's Agenda"
+    >
+
+      <span class="brand-mark">
+        <img
+          src="/assets/icons/katos-mascot.png"
+          alt="Kato's Agenda"
+        >
+      </span>
+
+      <span>
+        Kato's Agenda
+      </span>
+
+    </a>
+
+
+    <nav
+      class="nav-actions"
+      aria-label="Navegação principal"
+    >
+
+      <a
+        class="btn btn-secondary"
+        href="#recursos"
+      >
+        Recursos
+      </a>
+
+      <a
+        class="btn btn-secondary"
+        href="#planos"
+      >
+        Planos
+      </a>
+
+      <button
+        class="theme-toggle"
+        data-theme-toggle
+        type="button"
+        aria-label="Alternar tema"
+      ></button>
+
+      <a
+        class="btn btn-secondary"
+        href="pages/login.html"
+      >
+        Entrar
+      </a>
+
+      <a
+        class="btn btn-primary"
+        href="pages/register.html"
+      >
+        Começar agora
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <div class="hero-wrap">
+
+      <section class="hero container">
+
+        <div class="hero-copy fade-up">
+
+          <span class="eyebrow">
+            Gestão para barbearias
+          </span>
+
+          <h1>
+            Sua barbearia organizada, profissional e
+            <span>
+              pronta para crescer.
+            </span>
+          </h1>
+
+          <p>
+            Controle agenda, clientes, equipe e lembretes em um único sistema.
+            Menos tempo com tarefas repetitivas e mais foco no atendimento.
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              class="btn btn-primary btn-lg"
+              href="pages/register.html"
+            >
+              Criar minha conta
+            </a>
+
+            <a
+              class="btn btn-secondary btn-lg"
+              href="#recursos"
+            >
+              Conhecer o sistema
+            </a>
+
+          </div>
+
+
+          <div class="hero-trust">
+
+            <span class="trust-item">
+              <i class="trust-dot"></i>
+              Agenda centralizada
+            </span>
+
+            <span class="trust-item">
+              <i class="trust-dot"></i>
+              Gestão de profissionais
+            </span>
+
+            <span class="trust-item">
+              <i class="trust-dot"></i>
+              Lembretes de atendimento
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- DEMONSTRAÇÃO DO SISTEMA -->
+        <div class="product-shot fade-up">
+
+          <div class="browser">
+
+            <div class="browser-bar">
+
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+
+              <span class="browser-url"></span>
+
+            </div>
+
+
+            <div class="demo-shell">
+
+              <aside class="demo-side">
+
+                <div class="demo-brand">
+                  Kato's Agenda
+                </div>
+
+                <div class="demo-nav">
+
+                  <span class="active">
+                    Visão geral
+                  </span>
+
+                  <span>
+                    Agenda
+                  </span>
+
+                  <span>
+                    Clientes
+                  </span>
+
+                  <span>
+                    Profissionais
+                  </span>
+
+                  <span>
+                    Suporte
+                  </span>
+
+                </div>
+
+              </aside>
+
+
+              <div class="demo-main">
+
+                <div class="demo-head">
+
+                  <strong>
+                    Visão geral
+                  </strong>
+
+                  <span class="demo-badge">
+                    Business
+                  </span>
+
+                </div>
+
+
+                <div class="demo-stats">
+
+                  <div class="demo-stat">
+                    <span>Hoje</span>
+                    <strong>8</strong>
+                  </div>
+
+                  <div class="demo-stat">
+                    <span>Clientes</span>
+                    <strong>147</strong>
+                  </div>
+
+                  <div class="demo-stat">
+                    <span>Equipe</span>
+                    <strong>4</strong>
+                  </div>
+
+                </div>
+
+
+                <div class="demo-list">
+
+                  <div class="demo-row">
+
+                    <span class="demo-time">
+                      09:00
+                    </span>
+
+                    <div>
+                      <strong>
+                        Lucas Pereira
+                      </strong>
+
+                      <small>
+                        Corte + barba
+                      </small>
+                    </div>
+
+                    <span class="demo-status">
+                      Confirmado
+                    </span>
+
+                  </div>
+
+
+                  <div class="demo-row">
+
+                    <span class="demo-time">
+                      10:30
+                    </span>
+
+                    <div>
+                      <strong>
+                        Marcos Lima
+                      </strong>
+
+                      <small>
+                        Corte degradê
+                      </small>
+                    </div>
+
+                    <span class="demo-status">
+                      Confirmado
+                    </span>
+
+                  </div>
+
+
+                  <div class="demo-row">
+
+                    <span class="demo-time">
+                      13:00
+                    </span>
+
+                    <div>
+                      <strong>
+                        Rafael Souza
+                      </strong>
+
+                      <small>
+                        Barba
+                      </small>
+                    </div>
+
+                    <span class="demo-status">
+                      Confirmado
+                    </span>
+
+                  </div>
+
+
+                  <div class="demo-row">
+
+                    <span class="demo-time">
+                      15:30
+                    </span>
+
+                    <div>
+                      <strong>
+                        Daniel Rocha
+                      </strong>
+
+                      <small>
+                        Corte tradicional
+                      </small>
+                    </div>
+
+                    <span class="demo-status">
+                      Confirmado
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- FAIXA -->
+    <section class="logo-strip container fade-up">
+
+      <div class="strip">
+
+        <span>
+          Um sistema pensado para
+        </span>
+
+        <strong>
+          barbearias pequenas
+        </strong>
+
+        <span>
+          até
+        </span>
+
+        <strong>
+          equipes em crescimento
+        </strong>
+
+      </div>
+
+    </section>
+
+
+    <!-- RECURSOS -->
+    <section
+      class="section container"
+      id="recursos"
+    >
+
+      <div class="section-title fade-up">
+
+        <span class="eyebrow">
+          Recursos principais
+        </span>
+
+        <h2>
+          Mais controle da operação sem complicar sua rotina.
+        </h2>
+
+        <p>
+          Uma experiência direta para acompanhar o dia,
+          organizar sua equipe e manter o relacionamento
+          com os clientes em ordem.
+        </p>
+
+      </div>
+
+
+      <div class="feature-grid">
+
+        <article class="card feature-card fade-up">
+
+          <div class="feature-icon">
+
+            <svg viewBox="0 0 24 24">
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="16"
+                rx="2"
+              ></rect>
+
+              <path d="M16 3v4M8 3v4M3 10h18"></path>
+            </svg>
+
+          </div>
+
+          <h3>
+            Agenda centralizada
+          </h3>
+
+          <p>
+            Visualize horários, serviços e responsáveis em um só lugar,
+            com acesso rápido ao que acontece no dia.
+          </p>
+
+        </article>
+
+
+        <article class="card feature-card fade-up">
+
+          <div class="feature-icon">
+
+            <svg viewBox="0 0 24 24">
+
+              <path
+                d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"
+              ></path>
+
+              <path d="M8 9h8M8 13h5"></path>
+
+            </svg>
+
+          </div>
+
+          <h3>
+            Lembretes de atendimento
+          </h3>
+
+          <p>
+            Prepare e envie lembretes com os dados do agendamento
+            para reduzir esquecimentos e faltas.
+          </p>
+
+        </article>
+
+
+        <article class="card feature-card fade-up">
+
+          <div class="feature-icon">
+
+            <svg viewBox="0 0 24 24">
+
+              <circle
+                cx="9"
+                cy="8"
+                r="4"
+              ></circle>
+
+              <path d="M2 21a7 7 0 0 1 14 0M17 8h5M19.5 5.5v5"></path>
+
+            </svg>
+
+          </div>
+
+          <h3>
+            Equipe organizada
+          </h3>
+
+          <p>
+            Cadastre profissionais e distribua atendimentos
+            conforme o tamanho do plano contratado.
+          </p>
+
+        </article>
+
+
+        <article class="card feature-card fade-up">
+
+          <div class="feature-icon">
+
+            <svg viewBox="0 0 24 24">
+
+              <path d="M4 4h16v12H7l-3 3z"></path>
+
+              <path d="M8 8h8M8 12h5"></path>
+
+            </svg>
+
+          </div>
+
+          <h3>
+            Suporte integrado
+          </h3>
+
+          <p>
+            Abra chamados dentro da plataforma e acompanhe respostas
+            sem misturar suporte com a rotina da agenda.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- FLUXO -->
+    <section class="section container">
+
+      <div class="workflow">
+
+        <div class="section-title fade-up">
+
+          <span class="eyebrow">
+            Fluxo simples
+          </span>
+
+          <h2>
+            Do agendamento ao atendimento, tudo mais claro.
+          </h2>
+
+          <p>
+            O sistema foi pensado para reduzir cliques e deixar
+            as informações importantes visíveis no momento certo.
+          </p>
+
+        </div>
+
+
+        <div class="workflow-panel">
+
+          <div class="flow-item fade-up">
+
+            <div class="flow-number">
+              1
+            </div>
+
+            <div>
+
+              <h3>
+                Cadastre sua equipe e serviços
+              </h3>
+
+              <p>
+                Monte a estrutura da barbearia uma vez
+                e reutilize em todos os novos horários.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="flow-item fade-up">
+
+            <div class="flow-number">
+              2
+            </div>
+
+            <div>
+
+              <h3>
+                Agende o cliente em segundos
+              </h3>
+
+              <p>
+                Selecione cliente, profissional, serviço,
+                data e horário em uma única tela.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="flow-item fade-up">
+
+            <div class="flow-number">
+              3
+            </div>
+
+            <div>
+
+              <h3>
+                Acompanhe e confirme
+              </h3>
+
+              <p>
+                Visualize a agenda do dia e mantenha
+                o cliente informado antes do atendimento.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PLANOS -->
+    <section
+      class="section container"
+      id="planos"
+    >
+
+      <div class="section-title fade-up">
+
+        <span class="eyebrow">
+          Planos
+        </span>
+
+        <h2>
+          Escolha o plano ideal para o tamanho da sua equipe.
+        </h2>
+
+        <p>
+          Comece simples e aumente a capacidade
+          conforme sua barbearia crescer.
+        </p>
+
+      </div>
+
+
+      <div class="pricing-grid">
+
+        <!-- STARTER -->
+        <article class="card price-card fade-up">
+
+          <h3 class="price-name">
+            Starter
+          </h3>
+
+          <div class="price">
+            R$ 21,90
+            <span>
+              /mês
+            </span>
+          </div>
+
+          <p class="price-sub">
+            Para profissional autônomo.
+          </p>
+
+          <ul class="plan-list">
+
+            <li>
+              <span class="check">✓</span>
+              1 profissional
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Agenda e clientes
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Lembretes de atendimento
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Suporte pela plataforma
+            </li>
+
+          </ul>
+
+          <a
+            href="pages/register.html?plan=starter"
+            class="btn btn-secondary full"
+          >
+            Escolher Starter
+          </a>
+
+        </article>
+
+
+        <!-- BUSINESS -->
+        <article class="card price-card featured fade-up">
+
+          <span class="plan-badge">
+            Mais escolhido
+          </span>
+
+          <h3 class="price-name">
+            Business
+          </h3>
+
+          <div class="price">
+            R$ 69,90
+            <span>
+              /mês
+            </span>
+          </div>
+
+          <p class="price-sub">
+            Para barbearias com equipe.
+          </p>
+
+          <ul class="plan-list">
+
+            <li>
+              <span class="check">✓</span>
+              Até 5 profissionais
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Agenda e clientes
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Lembretes de atendimento
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Suporte pela plataforma
+            </li>
+
+          </ul>
+
+          <a
+            href="pages/register.html?plan=business"
+            class="btn btn-primary full"
+          >
+            Escolher Business
+          </a>
+
+        </article>
+
+
+        <!-- PLATINUM -->
+        <article class="card price-card fade-up">
+
+          <h3 class="price-name">
+            Platinum
+          </h3>
+
+          <div class="price">
+            R$ 149,90
+            <span>
+              /mês
+            </span>
+          </div>
+
+          <p class="price-sub">
+            Para operações maiores.
+          </p>
+
+          <ul class="plan-list">
+
+            <li>
+              <span class="check">✓</span>
+              Até 8 profissionais
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Agenda e clientes
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Lembretes de atendimento
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Suporte pela plataforma
+            </li>
+
+          </ul>
+
+          <a
+            href="pages/register.html?plan=platinum"
+            class="btn btn-secondary full"
+          >
+            Escolher Platinum
+          </a>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="container cta fade-up">
+
+      <div>
+
+        <h2>
+          Profissionalize sua agenda desde o primeiro atendimento.
+        </h2>
+
+        <p>
+          Centralize sua rotina, acompanhe sua equipe
+          e ofereça uma experiência mais organizada
+          para seus clientes.
+        </p>
+
+      </div>
+
+      <a
+        class="btn btn-primary btn-lg"
+        href="pages/register.html"
+      >
+        Começar agora
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <a
+        class="brand"
+        href="index.html"
+      >
+
+        <span class="brand-mark">
+
+          <img
+            src="/assets/icons/katos-mascot.png"
+            alt="Kato's Agenda"
+          >
+
+        </span>
+
+        <span>
+          Kato's Agenda
+        </span>
+
+      </a>
+
+
+      <span>
+        Gestão de agendamentos para barbearias
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JS -->
+  <script src="assets/js/theme.js"></script>
+
+  <script src="assets/js/landing.js"></script>
+
+  <script src="assets/js/pwa.js"></script>
+
+</body>
+
+</html>

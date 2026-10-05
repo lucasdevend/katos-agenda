@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Clientes | Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/dashboard.css"
+  >
+
+  <!-- Ícone do navegador -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+<body data-protected="true">
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <a
+        href="dashboard.html"
+        class="brand"
+      >
+        <span class="brand-mark">K</span>
+        <span>Kato's Agenda</span>
+      </a>
+
+      <nav class="menu">
+        <a href="dashboard.html">Visão geral</a>
+        <a href="appointments.html">Agenda</a>
+        <a
+          href="clients.html"
+          class="active"
+        >
+          Clientes
+        </a>
+        <a href="professionals.html">
+            Profissionais
+        </a>
+
+        <a href="services.html">
+          Serviços
+        </a>
+
+        <a href="settings.html">
+          Configurações
+        </a>
+
+        <a href="tickets.html">
+          Suporte
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button
+          class="btn btn-secondary"
+          data-logout
+        >
+          Sair da conta
+        </button>
+      </div>
+
+    </aside>
+
+
+    <!-- PRINCIPAL -->
+    <main class="app-main">
+
+      <!-- HEADER -->
+      <header class="app-header">
+
+        <div class="header-left">
+
+          <button
+            class="icon-btn mobile-menu"
+            data-sidebar-toggle
+            aria-label="Abrir menu"
+          ></button>
+
+          <strong
+            class="shop-name"
+            data-shop-name
+          ></strong>
+
+        </div>
+
+
+        <div class="header-right">
+
+          <span
+            class="badge"
+            data-plan
+          ></span>
+
+          <button
+            class="theme-toggle"
+            data-theme-toggle
+            type="button"
+            aria-label="Alternar tema"
+          ></button>
+
+        </div>
+
+      </header>
+
+
+      <!-- CONTEÚDO -->
+      <section class="app-content">
+
+        <div class="page-head">
+
+          <div>
+
+            <h1>
+              Clientes
+            </h1>
+
+            <p>
+              Gerencie seus clientes, acompanhe visitas e consulte o histórico de atendimentos.
+            </p>
+
+          </div>
+
+
+          <button
+            class="btn btn-primary"
+            type="button"
+            id="newClientButton"
+          >
+            Novo cliente
+          </button>
+
+        </div>
+
+
+        <!-- RESUMO -->
+        <div class="stats clients-stats">
+
+          <div class="stat-card">
+            <span>Total de clientes</span>
+            <strong id="clientsTotalStat">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Clientes com retorno</span>
+            <strong id="clientsReturnStat">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Atendimentos realizados</span>
+            <strong id="clientsAppointmentsStat">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Novos clientes no mês</span>
+            <strong id="clientsNewMonthStat">0</strong>
+          </div>
+
+        </div>
+
+
+        <!-- TABELA -->
+        <div class="card clients-card">
+
+          <div class="clients-card-header">
+
+            <div>
+              <h3>Base de clientes</h3>
+              <p>Visualize, edite e acompanhe o histórico de cada cliente.</p>
+            </div>
+
+            <div class="clients-search-wrap">
+              <input
+                type="text"
+                id="clientsSearch"
+                class="input"
+                placeholder="Buscar por nome, telefone ou e-mail"
+              >
+            </div>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table class="table">
+
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Contato</th>
+                  <th>Visitas</th>
+                  <th>Último corte</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+
+              <tbody id="clientsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- MODAL CLIENTE -->
+  <div
+    class="modal-backdrop"
+    id="clientModal"
+  >
+
+    <div class="modal card client-modal">
+
+      <div class="modal-head">
+
+        <div>
+          <h2 id="clientModalTitle">Novo cliente</h2>
+          <p class="modal-description">
+            Cadastre ou edite os dados do cliente.
+          </p>
+        </div>
+
+        <button
+           class="modal-close-btn"
+           type="button"
+           onclick="closeModal('#clientModal')"
+           aria-label="Fechar"
+        ></button>
+
+      </div>
+
+
+      <form
+        id="clientForm"
+        class="client-form"
+      >
+
+        <input
+          type="hidden"
+          id="clientEditId"
+        >
+
+        <div class="client-form-grid">
+
+          <div class="input-group">
+            <label for="clientName">Nome</label>
+            <input
+              id="clientName"
+              type="text"
+              class="input"
+              required
+            >
+          </div>
+
+          <div class="input-group">
+            <label for="clientPhone">Telefone</label>
+            <input
+              id="clientPhone"
+              type="text"
+              class="input"
+              placeholder="11999999999"
+              required
+            >
+          </div>
+
+          <div class="input-group full-row">
+            <label for="clientEmail">E-mail</label>
+            <input
+              id="clientEmail"
+              type="email"
+              class="input"
+              placeholder="cliente@email.com"
+            >
+          </div>
+
+        </div>
+
+        <div class="client-form-footer">
+          <button
+            class="btn btn-primary full"
+            type="submit"
+          >
+            Salvar cliente
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- MODAL HISTÓRICO -->
+  <div
+    class="modal-backdrop"
+    id="clientHistoryModal"
+  >
+
+    <div class="modal card history-modal">
+
+      <div class="modal-head">
+
+        <div>
+          <h2 id="historyClientName">Histórico do cliente</h2>
+          <p class="modal-description">
+            Consulte os cortes e atendimentos realizados.
+          </p>
+        </div>
+
+        <button
+           class="modal-close-btn"
+           type="button"
+           onclick="closeModal('#clientHistoryModal')"
+           aria-label="Fechar"
+        ></button>
+
+      </div>
+
+
+      <div class="history-top">
+
+        <div class="history-top-card">
+          <span>Total de visitas</span>
+          <strong id="historyVisits">0</strong>
+        </div>
+
+        <div class="history-top-card">
+          <span>Último atendimento</span>
+          <strong id="historyLastVisit">-</strong>
+        </div>
+
+        <div class="history-top-card">
+          <span>Total investido</span>
+          <strong id="historyTotalSpent">R$ 0,00</strong>
+        </div>
+
+      </div>
+
+
+      <div
+        id="clientHistoryList"
+        class="history-list"
+      ></div>
+
+    </div>
+
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/app.js"></script>
+
+<!-- JS específico da página -->
+  <script src="../assets/js/clients.js"></script>
+   <script src="../assets/js/realtime-notifications.js"></script>
+   <script src="../assets/js/pwa.js"></script>
+</body>
+
+</html>

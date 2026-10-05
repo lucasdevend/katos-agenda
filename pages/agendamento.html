@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Agendamento | Kato's Agenda</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/booking.css"
+  >
+
+  <!-- Ícone do navegador -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/katos-icon.png"
+  >
+
+  <!-- PWA -->
+  <link
+    rel="manifest"
+    href="/manifest.json"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080c13"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Kato's Agenda"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="/assets/icons/katos-icon.png"
+  >
+</head>
+
+<body>
+
+  <main class="booking-shell">
+
+
+    <!-- CARREGAMENTO -->
+    <section
+      class="booking-loading"
+      id="bookingLoading"
+    >
+
+      <div class="booking-loading-mark">
+        K
+      </div>
+
+      <strong>
+        Carregando agenda...
+      </strong>
+
+    </section>
+
+
+
+    <!-- ERRO -->
+    <section
+      class="booking-error"
+      id="bookingError"
+      hidden
+    >
+
+      <div class="booking-error-mark">
+        !
+      </div>
+
+      <h1>
+        Agenda indisponível
+      </h1>
+
+      <p id="bookingErrorText">
+        Não foi possível carregar esta agenda.
+      </p>
+
+    </section>
+
+
+
+    <!-- CONTEÚDO -->
+    <div
+      class="booking-layout"
+      id="bookingContent"
+      hidden
+    >
+
+
+      <!-- CABEÇALHO DO NEGÓCIO -->
+      <header class="business-header">
+
+        <div
+          class="business-logo"
+          id="businessLogo"
+        >
+          K
+        </div>
+
+
+        <div class="business-info">
+
+          <span class="business-eyebrow">
+            AGENDAMENTO ONLINE
+          </span>
+
+          <h1 id="businessName"></h1>
+
+          <div class="business-meta">
+
+            <span
+              id="businessAddress"
+              hidden
+            ></span>
+
+            <span
+              id="businessPhone"
+              hidden
+            ></span>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+
+      <!-- FORMULÁRIO -->
+      <form
+        class="booking-card"
+        id="bookingForm"
+      >
+
+
+        <!-- SERVIÇO -->
+        <section class="booking-section">
+
+          <div class="section-head">
+
+            <span class="section-number">
+              1
+            </span>
+
+            <div>
+
+              <h2>
+                Escolha o serviço
+              </h2>
+
+              <p>
+                Selecione o atendimento desejado.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="service-grid"
+            id="serviceGrid"
+          ></div>
+
+        </section>
+
+
+
+        <!-- PROFISSIONAL -->
+        <section class="booking-section">
+
+          <div class="section-head">
+
+            <span class="section-number">
+              2
+            </span>
+
+            <div>
+
+              <h2>
+                Escolha o profissional
+              </h2>
+
+              <p>
+                Mostraremos apenas quem realiza o serviço selecionado.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="professional-grid"
+            id="professionalGrid"
+          >
+
+            <div class="empty-selection">
+              Escolha um serviço primeiro.
+            </div>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- DATA -->
+        <section class="booking-section">
+
+          <div class="section-head">
+
+            <span class="section-number">
+              3
+            </span>
+
+            <div>
+
+              <h2>
+                Escolha a data
+              </h2>
+
+              <p>
+                Consulte os horários disponíveis.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <label class="date-field">
+
+            <span>
+              Data
+            </span>
+
+            <input
+              type="date"
+              id="bookingDate"
+              required
+            >
+
+          </label>
+
+
+          <div
+            class="time-grid"
+            id="timeGrid"
+          >
+
+            <div class="empty-selection">
+              Escolha serviço, profissional e data.
+            </div>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- CLIENTE -->
+        <section class="booking-section">
+
+          <div class="section-head">
+
+            <span class="section-number">
+              4
+            </span>
+
+            <div>
+
+              <h2>
+                Seus dados
+              </h2>
+
+              <p>
+                Usaremos seu WhatsApp para identificar o agendamento e enviar lembretes.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="customer-grid">
+
+            <label class="field">
+
+              <span>
+                Nome
+              </span>
+
+              <input
+                type="text"
+                id="customerName"
+                placeholder="Seu nome"
+                autocomplete="name"
+                required
+              >
+
+            </label>
+
+
+            <label class="field">
+
+              <span>
+                WhatsApp
+              </span>
+
+              <input
+                type="tel"
+                id="customerPhone"
+                placeholder="(11) 99999-9999"
+                autocomplete="tel"
+                inputmode="tel"
+                required
+              >
+
+            </label>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- RESUMO -->
+        <section class="booking-summary">
+
+          <div>
+
+            <span>
+              Serviço
+            </span>
+
+            <strong id="summaryService">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Profissional
+            </span>
+
+            <strong id="summaryProfessional">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Data
+            </span>
+
+            <strong id="summaryDate">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Horário
+            </span>
+
+            <strong id="summaryTime">
+              —
+            </strong>
+
+          </div>
+
+        </section>
+
+
+
+        <div
+          class="booking-message"
+          id="bookingMessage"
+        ></div>
+
+
+        <button
+          type="submit"
+          class="confirm-button"
+          id="confirmBookingButton"
+          disabled
+        >
+          Confirmar agendamento
+        </button>
+
+
+      </form>
+
+
+
+      <!-- SUCESSO -->
+      <section
+        class="booking-success"
+        id="bookingSuccess"
+        hidden
+      >
+
+        <div class="success-check">
+          ✓
+        </div>
+
+        <span class="success-eyebrow">
+          AGENDAMENTO CONFIRMADO
+        </span>
+
+        <h2>
+          Seu horário foi reservado.
+        </h2>
+
+        <p>
+          Confira os detalhes abaixo.
+        </p>
+
+
+        <div class="success-details">
+
+          <div>
+
+            <span>
+              Serviço
+            </span>
+
+            <strong id="successService">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Profissional
+            </span>
+
+            <strong id="successProfessional">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Data
+            </span>
+
+            <strong id="successDate">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Horário
+            </span>
+
+            <strong id="successTime">
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <p class="success-reminder">
+          Seus lembretes poderão ser enviados pelo WhatsApp cadastrado.
+        </p>
+
+
+        <button
+          type="button"
+          class="new-booking-button"
+          id="newBookingButton"
+        >
+          Fazer outro agendamento
+        </button>
+
+      </section>
+
+
+
+      <footer class="booking-footer">
+
+        Agendamento por
+
+        <strong>
+          Kato's Agenda
+        </strong>
+
+      </footer>
+
+
+    </div>
+
+  </main>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="../assets/js/supabase.js"></script>
+
+<script src="../assets/js/booking.js"></script>
+
+<script src="../assets/js/realtime-notifications.js"></script>
+
+<script src="../assets/js/pwa.js"></script>
+
+</body>
+</html>
+</body>
+
+</html>
