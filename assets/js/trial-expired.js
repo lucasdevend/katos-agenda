@@ -1,268 +1,239 @@
-(function () {
-
-  "use strict";
-
-  console.log("trial-expired.js carregou");
-
-
+document.addEventListener("DOMContentLoaded", async () => {
   const supabase =
     window.katosSupabase ||
     window.supabaseClient;
 
-
   if (!supabase) {
-
-    console.error(
-      "Supabase não inicializado."
-    );
-
+    console.error("Supabase não inicializado.");
     return;
   }
 
+  const buttons = document.querySelectorAll(
+    "[data-select-plan]"
+  );
 
-  async function loadExpiredPage() {
+  let loading = false;
 
-    const {
-      data: sessionData,
-      error: sessionError
-    } =
-      await supabase
-        .auth
-        .getSession();
+  function setLoading(active, selectedButton = null) {
+    buttons.forEach((button) => {
+      button.disabled = active;
 
+      if (active && button === selectedButton) {
+        button.dataset.originalText =
+          button.dataset.originalText ||
+          button.textContent;
 
-    if (
-      sessionError ||
-      !sessionData?.session
-    ) {
-
-      window.location.replace(
-        "login.html"
-      );
-
-      return;
-    }
-
-
-    const user =
-      sessionData.session.user;
-
-
-    const {
-      data: business,
-      error: businessError
-    } =
-      await supabase
-        .from("businesses")
-        .select("id")
-        .eq(
-          "owner_id",
-          user.id
-        )
-        .single();
-
-
-    if (
-      businessError ||
-      !business
-    ) {
-
-      console.error(
-        "Empresa não encontrada:",
-        businessError
-      );
-
-      return;
-    }
-
-
-    const {
-      data: subscription,
-      error: subscriptionError
-    } =
-      await supabase
-        .from("subscriptions")
-        .select(`
-          id,
-          plan,
-          status,
-          trial_ends_at,
-          current_period_end
-        `)
-        .eq(
-          "business_id",
-          business.id
-        )
-        .single();
-
-
-    if (
-      subscriptionError ||
-      !subscription
-    ) {
-
-      console.error(
-        "Assinatura não encontrada:",
-        subscriptionError
-      );
-
-      return;
-    }
-
-
-    const status =
-      String(
-        subscription.status ||
-        ""
-      )
-        .toLowerCase()
-        .trim();
-
-
-    /* =============================================
-       TESTE AINDA VÁLIDO
-    ============================================= */
-
-    if (
-      status ===
-      "trialing"
-    ) {
-
-      const end =
-        subscription.trial_ends_at
-          ? new Date(
-              subscription.trial_ends_at
-            )
-          : null;
-
-
-      if (
-        end &&
-        end.getTime() >
-        Date.now()
+        button.textContent =
+          "Abrindo pagamento...";
+      } else if (
+        !active &&
+        button.dataset.originalText
       ) {
-
-        window.location.replace(
-          "dashboard.html"
-        );
-
-        return;
+        button.textContent =
+          button.dataset.originalText;
       }
-
-    }
-
-
-    /* =============================================
-       ASSINATURA ATIVA
-    ============================================= */
-
-    if (
-      status ===
-      "active"
-    ) {
-
-      window.location.replace(
-        "dashboard.html"
-      );
-
-      return;
-    }
-
-
-    /* =============================================
-       CANCELADA MAS AINDA COM ACESSO
-    ============================================= */
-
-    if (
-      status ===
-      "cancelled" &&
-      subscription
-        .current_period_end
-    ) {
-
-      const periodEnd =
-        new Date(
-          subscription
-            .current_period_end
-        );
-
-
-      if (
-        periodEnd.getTime() >
-        Date.now()
-      ) {
-
-        window.location.replace(
-          "dashboard.html"
-        );
-
-        return;
-      }
-
-    }
-
+    });
   }
 
+  async function checkAccount() {
+    try {
+      const {
+        data: { session },
+        error: sessionError,
+      } = await supabase.auth.getSession();
 
-  /* =============================================
-     ESCOLHER PLANO
-  ============================================= */
-
- document
-  .querySelectorAll("[data-select-plan]")
-  .forEach(button => {
-
-    button.addEventListener("click", event => {
-
-      console.log("CLICOU NO PLANO");
-
-      event.preventDefault();
-
-      const plan =
-        button.dataset.selectPlan;
-
-      if (!plan) {
-        return;
+      if (sessionError || !session) {
+        window.location.href =
+          "login.html";
+        return false;
       }
 
-      localStorage.setItem(
-        "katos_selected_plan",
-        plan
-      );
+      const {
+        data: business,
+        error: businessError,
+      } = await supabase
+        .from("businesses")
+        .select("id")
+        .eq("owner_id", session.user.id)
+        .single();
 
-      window.location.href =
-        `manage-plan.html?plan=${encodeURIComponent(plan)}&from=trial_expired`;
+      if (businessError || !business) {
+        console.error(
+          "Empresa não encontrada:",
+          businessError
+        );
+        return false;
+      }
 
-    });
-
-  });
-
-
-  loadExpiredPage();
-
-})();
-
-document
-  .querySelectorAll(".expired-plan-card")
-  .forEach(card => {
-
-    card.addEventListener("click", event => {
+      const {
+        data: subscription,
+        error: subscriptionError,
+      } = await supabase
+        .from("subscriptions")
+        .select(
+          "status, trial_ends_at, current_period_end"
+        )
+        .eq("business_id", business.id)
+        .single();
 
       if (
-        event.target.closest(
-          "[data-select-plan]"
-        )
+        subscriptionError ||
+        !subscription
       ) {
-        return;
+        console.error(
+          "Assinatura não encontrada:",
+          subscriptionError
+        );
+        return true;
       }
 
-      const button =
-        card.querySelector(
-          "[data-select-plan]"
-        );
+      const now = new Date();
 
-      button?.click();
+      if (
+        subscription.status === "trialing" &&
+        subscription.trial_ends_at &&
+        new Date(subscription.trial_ends_at) >
+          now
+      ) {
+        window.location.href =
+          "dashboard.html";
+        return false;
+      }
 
-    });
+      if (
+        subscription.status === "active"
+      ) {
+        window.location.href =
+          "dashboard.html";
+        return false;
+      }
 
+      if (
+        subscription.status ===
+          "cancelled" &&
+        subscription.current_period_end &&
+        new Date(
+          subscription.current_period_end
+        ) > now
+      ) {
+        window.location.href =
+          "dashboard.html";
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      console.error(
+        "Erro ao verificar assinatura:",
+        error
+      );
+
+      return true;
+    }
+  }
+
+  const canStay =
+    await checkAccount();
+
+  if (!canStay) {
+    return;
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener(
+      "click",
+      async () => {
+        if (loading) return;
+
+        const plan =
+          button.dataset.selectPlan;
+
+        if (
+          ![
+            "starter",
+            "business",
+            "platinum",
+          ].includes(plan)
+        ) {
+          alert("Plano inválido.");
+          return;
+        }
+
+        loading = true;
+        setLoading(true, button);
+
+        try {
+          const {
+            data: { session },
+            error: sessionError,
+          } =
+            await supabase.auth.getSession();
+
+          if (
+            sessionError ||
+            !session
+          ) {
+            window.location.href =
+              "login.html";
+            return;
+          }
+
+          const {
+            data,
+            error,
+          } =
+            await supabase.functions.invoke(
+              "create-mp-subscription",
+              {
+                body: {
+                  plan,
+                },
+              }
+            );
+
+          if (error) {
+            console.error(
+              "Erro Edge Function:",
+              error
+            );
+
+            throw new Error(
+              "Não foi possível iniciar o pagamento."
+            );
+          }
+
+          if (
+            !data?.ok ||
+            !data?.checkout_url
+          ) {
+            console.error(
+              "Resposta inválida:",
+              data
+            );
+
+            throw new Error(
+              data?.error ||
+                "Link de pagamento não recebido."
+            );
+          }
+
+          window.location.href =
+            data.checkout_url;
+        } catch (error) {
+          console.error(
+            "Erro ao criar pagamento:",
+            error
+          );
+
+          alert(
+            error?.message ||
+              "Erro ao abrir o Mercado Pago."
+          );
+
+          loading = false;
+          setLoading(false);
+        }
+      }
+    );
   });
+});
