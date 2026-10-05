@@ -562,3 +562,133 @@ body {
   position: relative;
   z-index: 2;
 }
+
+/* =========================
+   PAGAMENTO MERCADO PAGO
+========================= */
+
+#paymentSection {
+  width: min(100%, 620px);
+  margin: 48px auto 80px;
+  padding: 32px;
+  border: 1px solid var(--border, #dbe3ef);
+  border-radius: 20px;
+  background: var(--surface, #ffffff);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+#paymentSection h2 {
+  margin: 0 0 26px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+#form-checkout {
+  display: grid;
+  gap: 18px;
+}
+
+#form-checkout > div {
+  display: grid;
+  gap: 8px;
+}
+
+#form-checkout label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#form-checkout input,
+#form-checkout select,
+.mp-field {
+  width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+  border: 1px solid #cfd8e6;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #111827;
+  font: inherit;
+}
+
+#form-checkout input,
+#form-checkout select {
+  padding: 0 14px;
+  outline: none;
+}
+
+#form-checkout input:focus,
+#form-checkout select:focus,
+.mp-field:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.mp-field {
+  padding: 0 12px;
+  overflow: hidden;
+}
+
+.mp-field iframe {
+  width: 100% !important;
+  height: 46px !important;
+}
+
+#form-checkout__submit {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 8px;
+  border: 0;
+  border-radius: 11px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+#form-checkout__submit:hover {
+  transform: translateY(-1px);
+}
+
+#form-checkout__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* DARK MODE */
+
+html[data-theme="dark"] #paymentSection {
+  background: #101827;
+  border-color: #263244;
+  box-shadow: none;
+}
+
+html[data-theme="dark"] #form-checkout input,
+html[data-theme="dark"] #form-checkout select,
+html[data-theme="dark"] .mp-field {
+  background: #111827;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 680px) {
+  #paymentSection {
+    width: auto;
+    margin: 32px 16px 60px;
+    padding: 22px;
+    border-radius: 16px;
+  }
+
+  #paymentSection h2 {
+    font-size: 21px;
+  }
+}
