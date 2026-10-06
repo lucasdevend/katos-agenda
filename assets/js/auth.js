@@ -1954,22 +1954,94 @@
      ATIVA
 
   ===================================================== */
+  /* =====================================================
+   ATIVA
+===================================================== */
 
-
+if (
+  status === "active"
+) {
 
   if (
-
-    status === "active"
-
+    subscription.current_period_end
   ) {
 
-    return;
+    const periodEnd =
+      new Date(
+        subscription
+          .current_period_end
+      );
+
+
+    if (
+      Number.isNaN(
+        periodEnd.getTime()
+      )
+    ) {
+
+      window.location.replace(
+        "manage-plan.html?reason=invalid_period"
+      );
+
+      return;
+
+    }
+
+
+    if (
+      periodEnd.getTime() <=
+      Date.now()
+    ) {
+
+      const {
+        error: expireError
+      } =
+        await supabaseClient
+          .from("subscriptions")
+          .update({
+
+            status:
+              "expired",
+
+            updated_at:
+              new Date()
+                .toISOString()
+
+          })
+          .eq(
+            "id",
+            subscription.id
+          )
+          .eq(
+            "business_id",
+            account.businessId
+          );
+
+
+      if (expireError) {
+
+        console.error(
+          "Erro ao marcar assinatura como expirada:",
+          expireError
+        );
+
+      }
+
+
+      window.location.replace(
+        "trial-expired.html?reason=period_expired"
+      );
+
+      return;
+
+    }
 
   }
 
 
+  return;
 
-
+}
 
   /* =====================================================
 

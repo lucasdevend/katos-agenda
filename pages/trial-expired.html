@@ -269,87 +269,261 @@
       o acesso será restaurado.
     </p>
 
-    <section id="paymentSection" style="display:none;">
-  <h2>Dados de pagamento</h2>
 
-  <form id="form-checkout">
-
-    <div>
-      <label>Número do cartão</label>
-      <div
-        id="form-checkout__cardNumber"
-        class="mp-field"
-      ></div>
-    </div>
-
-    <div>
-      <label>Validade</label>
-      <div
-        id="form-checkout__expirationDate"
-        class="mp-field"
-      ></div>
-    </div>
-
-    <div>
-      <label>CVV</label>
-      <div
-        id="form-checkout__securityCode"
-        class="mp-field"
-      ></div>
-    </div>
-
-    <div>
-      <label>Nome no cartão</label>
-      <input
-        type="text"
-        id="form-checkout__cardholderName"
-      >
-    </div>
-
-    <div>
-      <label>E-mail</label>
-      <input
-        type="email"
-        id="form-checkout__cardholderEmail"
-      >
-    </div>
-
-    <div>
-      <label>Tipo de documento</label>
-      <select
-        id="form-checkout__identificationType"
-      ></select>
-    </div>
-
-    <div>
-      <label>CPF</label>
-      <input
-        type="text"
-        id="form-checkout__identificationNumber"
-      >
-    </div>
-
-    <select
-      id="form-checkout__issuer"
+    <section
+      id="paymentSection"
+      class="payment-section"
       style="display:none;"
-    ></select>
-
-    <select
-      id="form-checkout__installments"
-      style="display:none;"
-    ></select>
-
-    <button
-      type="submit"
-      id="form-checkout__submit"
     >
-      Assinar plano
-    </button>
 
-  </form>
-</section>
+      <div class="payment-heading">
+        <span class="expired-badge">
+          PAGAMENTO SEGURO
+        </span>
+
+        <h2>
+          Escolha como deseja pagar
+        </h2>
+
+        <p id="selectedPlanText">
+          Selecione cartão ou Pix para continuar.
+        </p>
+      </div>
+
+
+      <div
+        class="payment-methods"
+        role="tablist"
+        aria-label="Forma de pagamento"
+      >
+
+        <button
+          type="button"
+          class="payment-method active"
+          id="paymentMethodCard"
+          data-payment-method="card"
+          aria-selected="true"
+        >
+          Cartão
+          <small>Renovação automática</small>
+        </button>
+
+        <button
+          type="button"
+          class="payment-method"
+          id="paymentMethodPix"
+          data-payment-method="pix"
+          aria-selected="false"
+        >
+          Pix
+          <small>Pagamento mensal</small>
+        </button>
+
+      </div>
+
+
+      <!-- CARTÃO -->
+
+      <div
+        id="cardPaymentPanel"
+        class="payment-panel active"
+      >
+
+        <form id="form-checkout">
+
+          <div>
+            <label>Número do cartão</label>
+            <div
+              id="form-checkout__cardNumber"
+              class="mp-field"
+            ></div>
+          </div>
+
+          <div>
+            <label>Validade</label>
+            <div
+              id="form-checkout__expirationDate"
+              class="mp-field"
+            ></div>
+          </div>
+
+          <div>
+            <label>CVV</label>
+            <div
+              id="form-checkout__securityCode"
+              class="mp-field"
+            ></div>
+          </div>
+
+          <div>
+            <label>Nome no cartão</label>
+            <input
+              type="text"
+              id="form-checkout__cardholderName"
+            >
+          </div>
+
+          <div>
+            <label>E-mail</label>
+            <input
+              type="email"
+              id="form-checkout__cardholderEmail"
+            >
+          </div>
+
+          <div>
+            <label>Tipo de documento</label>
+            <select
+              id="form-checkout__identificationType"
+            ></select>
+          </div>
+
+          <div>
+            <label>CPF</label>
+            <input
+              type="text"
+              id="form-checkout__identificationNumber"
+            >
+          </div>
+
+          <select
+            id="form-checkout__issuer"
+            style="display:none;"
+          ></select>
+
+          <select
+            id="form-checkout__installments"
+            style="display:none;"
+          ></select>
+
+          <button
+            type="submit"
+            id="form-checkout__submit"
+          >
+            Assinar com cartão
+          </button>
+
+        </form>
+
+      </div>
+
+
+      <!-- PIX -->
+
+      <div
+        id="pixPaymentPanel"
+        class="payment-panel"
+        hidden
+      >
+
+        <div class="pix-intro">
+
+          <h3>
+            Pague mensalmente com Pix
+          </h3>
+
+          <p>
+            Gere um Pix para o plano selecionado.
+            Assim que o Mercado Pago confirmar o pagamento,
+            seu acesso será liberado automaticamente.
+          </p>
+
+        </div>
+
+        <div class="pix-customer-data">
+
+          <label for="pixCpf">
+            CPF do pagador
+          </label>
+
+          <input
+            type="text"
+            id="pixCpf"
+            inputmode="numeric"
+            maxlength="14"
+            placeholder="000.000.000-00"
+            autocomplete="off"
+          >
+        </div>
+
+
+        <button
+          type="button"
+          id="generatePixButton"
+          class="expired-plan-button primary"
+        >
+          Gerar Pix
+        </button>
+
+
+        <div
+          id="pixLoading"
+          class="pix-status"
+          hidden
+        >
+          Gerando seu Pix...
+        </div>
+
+
+        <div
+          id="pixResult"
+          class="pix-result"
+          hidden
+        >
+
+          <div class="pix-qr-wrap">
+
+            <img
+              id="pixQrCodeImage"
+              alt="QR Code Pix"
+            >
+
+          </div>
+
+
+          <div class="pix-copy-area">
+
+            <label for="pixCopyPaste">
+              Pix Copia e Cola
+            </label>
+
+            <textarea
+              id="pixCopyPaste"
+              readonly
+              rows="4"
+            ></textarea>
+
+            <button
+              type="button"
+              id="copyPixButton"
+              class="expired-plan-button"
+            >
+              Copiar código Pix
+            </button>
+
+          </div>
+
+
+          <p class="pix-warning">
+            Após pagar, aguarde alguns segundos.
+            O acesso será restaurado quando o pagamento for confirmado.
+          </p>
+
+        </div>
+
+
+        <div
+          id="pixError"
+          class="auth-message"
+          hidden
+        ></div>
+
+      </div>
+
+    </section>
 
   </main>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 

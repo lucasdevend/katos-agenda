@@ -146,6 +146,463 @@
 
 
 
+
+<style>
+  .wa-auto-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wa-auto-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+    gap: 72px;
+    align-items: center;
+    padding: 42px 0;
+  }
+
+  .wa-auto-copy h2 {
+    max-width: 720px;
+    margin: 16px 0 18px;
+  }
+
+  .wa-auto-copy > p {
+    max-width: 690px;
+    margin-bottom: 26px;
+    line-height: 1.75;
+  }
+
+  .wa-auto-benefits {
+    display: grid;
+    gap: 13px;
+    margin: 0 0 30px;
+  }
+
+  .wa-auto-benefits span {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-weight: 600;
+  }
+
+  .wa-auto-benefits i {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #4f8cff;
+    box-shadow: 0 0 0 5px rgba(79, 140, 255, 0.12);
+    flex: 0 0 auto;
+  }
+
+  .wa-phone-stage {
+    position: relative;
+    min-height: 620px;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+  }
+
+  .wa-phone-stage::before {
+    content: "";
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at center,
+        rgba(79, 140, 255, 0.22) 0,
+        rgba(79, 140, 255, 0.08) 42%,
+        rgba(79, 140, 255, 0) 70%);
+    filter: blur(8px);
+    z-index: -2;
+  }
+
+  .wa-phone-stage::after {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: 1px solid rgba(79, 140, 255, 0.12);
+    border-radius: 50%;
+    z-index: -3;
+    animation: wa-orbit 8s linear infinite;
+  }
+
+  .wa-phone {
+    width: 310px;
+    border-radius: 40px;
+    padding: 10px;
+    background: linear-gradient(145deg, #111722, #05080d);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow:
+      0 35px 80px rgba(0,0,0,0.38),
+      0 0 0 8px rgba(255,255,255,0.02);
+    animation: wa-float 5s ease-in-out infinite;
+  }
+
+  .wa-phone-top {
+    height: 24px;
+    display: grid;
+    place-items: center;
+  }
+
+  .wa-speaker {
+    display: block;
+    width: 74px;
+    height: 6px;
+    border-radius: 99px;
+    background: rgba(255,255,255,0.11);
+  }
+
+  .wa-screen {
+    min-height: 540px;
+    overflow: hidden;
+    border-radius: 31px;
+    background:
+      radial-gradient(circle at 25% 15%, rgba(255,255,255,0.035), transparent 36%),
+      #0b141a;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .wa-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 16px 14px;
+    background: #1f2c34;
+    color: #f5f7fa;
+  }
+
+  .wa-chat-header strong,
+  .wa-chat-header small {
+    display: block;
+  }
+
+  .wa-chat-header strong {
+    font-size: 14px;
+  }
+
+  .wa-chat-header small {
+    margin-top: 2px;
+    color: #aebac1;
+    font-size: 11px;
+  }
+
+  .wa-avatar {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #111827;
+    font-weight: 900;
+  }
+
+  .wa-chat-body {
+    min-height: 405px;
+    padding: 18px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    background:
+      linear-gradient(rgba(11,20,26,0.93), rgba(11,20,26,0.93)),
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.03) 0 2px, transparent 2.5px);
+    background-size: auto, 34px 34px;
+  }
+
+  .wa-day {
+    align-self: center;
+    margin-bottom: 16px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    background: #182229;
+    color: #c7d0d5;
+    font-size: 10px;
+  }
+
+  .wa-message {
+    align-self: flex-end;
+    max-width: 86%;
+    margin-bottom: 9px;
+    padding: 9px 10px 6px;
+    border-radius: 9px 9px 2px 9px;
+    background: #005c4b;
+    color: #edf7f4;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.16);
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+
+  .wa-message p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .wa-message span {
+    display: block;
+    margin-top: 3px;
+    text-align: right;
+    color: #9fc7bd;
+    font-size: 9px;
+  }
+
+  .wa-message-1 {
+    animation: wa-message-in 8s ease infinite;
+    animation-delay: .8s;
+  }
+
+  .wa-message-2 {
+    animation: wa-message-in 8s ease infinite;
+    animation-delay: 2.4s;
+  }
+
+  .wa-message-3 {
+    animation: wa-message-in 8s ease infinite;
+    animation-delay: 4s;
+  }
+
+  .wa-typing {
+    align-self: flex-end;
+    display: flex;
+    gap: 4px;
+    padding: 9px 11px;
+    border-radius: 12px 12px 3px 12px;
+    background: #1f2c34;
+    opacity: 0;
+    animation: wa-typing-show 8s ease infinite;
+  }
+
+  .wa-typing i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #9daab1;
+    animation: wa-dot 1s ease-in-out infinite;
+  }
+
+  .wa-typing i:nth-child(2) { animation-delay: .15s; }
+  .wa-typing i:nth-child(3) { animation-delay: .3s; }
+
+  .wa-input-fake {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 9px;
+    padding: 9px 10px 9px 14px;
+    border-radius: 999px;
+    background: #1f2c34;
+    color: #82919a;
+    font-size: 11px;
+  }
+
+  .wa-send {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #00a884;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  .wa-float-badge,
+  .wa-mini-card {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(16, 24, 39, 0.9);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+  }
+
+.wa-float-badge {
+  top: 68px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #eaf1ff;
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 10;
+  animation: wa-float-small 4s ease-in-out infinite;
+}
+
+  .wa-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #27d17f;
+    box-shadow: 0 0 0 0 rgba(39,209,127,0.55);
+    animation: wa-pulse 1.8s infinite;
+  }
+
+  .wa-mini-card {
+    min-width: 190px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    color: #fff;
+  }
+
+  .wa-mini-card strong,
+  .wa-mini-card span {
+    display: block;
+  }
+
+  .wa-mini-card strong {
+    font-size: 13px;
+  }
+
+  .wa-mini-card span {
+    margin-top: 3px;
+    color: #9fb0c7;
+    font-size: 11px;
+  }
+
+  .wa-mini-card-1 {
+    left: 0;
+    bottom: 92px;
+    animation: wa-float-small 4.8s ease-in-out infinite;
+  }
+
+  .wa-mini-card-2 {
+    right: -4px;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: wa-float-small 5.4s ease-in-out infinite reverse;
+  }
+
+  .wa-mini-card-2 > div {
+    min-width: 0;
+  }
+
+  .wa-check {
+    width: 34px;
+    height: 34px;
+    display: grid !important;
+    place-items: center;
+    flex: 0 0 auto;
+    margin: 0 !important;
+    border-radius: 50%;
+    background: rgba(39,209,127,0.14);
+    color: #27d17f !important;
+    font-weight: 900;
+  }
+
+  @keyframes wa-float {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-16px) rotate(1deg); }
+  }
+
+  @keyframes wa-float-small {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes wa-orbit {
+    from { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.035); }
+    to { transform: rotate(360deg) scale(1); }
+  }
+
+  @keyframes wa-message-in {
+    0%, 7% {
+      opacity: 0;
+      transform: translateY(16px) scale(0.97);
+    }
+    14%, 78% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    92%, 100% {
+      opacity: 0;
+      transform: translateY(-6px) scale(0.99);
+    }
+  }
+
+  @keyframes wa-typing-show {
+    0%, 8%, 56%, 100% { opacity: 0; }
+    15%, 48% { opacity: 1; }
+  }
+
+  @keyframes wa-dot {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-4px); }
+  }
+
+  @keyframes wa-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(39,209,127,0.55); }
+    70% { box-shadow: 0 0 0 10px rgba(39,209,127,0); }
+    100% { box-shadow: 0 0 0 0 rgba(39,209,127,0); }
+  }
+
+  @media (max-width: 980px) {
+    .wa-auto-grid {
+      grid-template-columns: 1fr;
+      gap: 34px;
+    }
+
+    .wa-phone-stage {
+      min-height: 590px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .wa-auto-grid {
+      padding: 14px 0;
+    }
+
+    .wa-phone-stage {
+      min-height: 560px;
+      transform: scale(.93);
+      transform-origin: top center;
+    }
+
+    .wa-phone {
+      width: 292px;
+    }
+
+    .wa-float-badge {
+      right: 0;
+      top: 48px;
+    }
+
+    .wa-mini-card-1 {
+      left: -2px;
+      bottom: 78px;
+    }
+
+    .wa-mini-card-2 {
+      right: -2px;
+      bottom: 16px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wa-phone,
+    .wa-phone-stage::after,
+    .wa-float-badge,
+    .wa-mini-card,
+    .wa-message,
+    .wa-typing,
+    .wa-typing i,
+    .wa-pulse {
+      animation: none !important;
+    }
+
+    .wa-message {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
 </head>
 
 
@@ -1348,7 +1805,134 @@
 
 
 
-    <!-- PLANOS -->
+  
+  <!-- AUTOMAÇÃO WHATSAPP -->
+  <section class="section container wa-auto-section" id="whatsapp-automatico">
+
+    <div class="wa-auto-grid">
+
+      <div class="wa-auto-copy fade-up">
+
+        <span class="eyebrow">
+          Menos faltas. Menos mensagens manuais.
+        </span>
+
+        <h2>
+          O Kato's Agenda lembra o cliente por você.
+        </h2>
+
+        <p>
+          Chega de parar o atendimento para confirmar horário no WhatsApp.
+          O sistema pode enviar lembretes automáticos com os dados do agendamento,
+          ajudando a reduzir esquecimentos e deixando sua rotina mais organizada.
+        </p>
+
+        <div class="wa-auto-benefits">
+          <span><i></i> Confirmação automática do horário</span>
+          <span><i></i> Menos clientes esquecendo o agendamento</span>
+          <span><i></i> Mais tempo para atender e cuidar da barbearia</span>
+        </div>
+
+        <a
+          class="btn btn-primary btn-lg"
+          href="pages/register.html"
+        >
+          Testar 15 dias grátis
+        </a>
+
+      </div>
+
+
+      <div class="wa-phone-stage fade-up" aria-label="Demonstração de lembrete automático">
+
+        <div class="wa-float-badge">
+          <span class="wa-pulse"></span>
+          Automação ativa
+        </div>
+
+        <div class="wa-phone">
+
+          <div class="wa-phone-top">
+            <span class="wa-speaker"></span>
+          </div>
+
+          <div class="wa-screen">
+
+            <div class="wa-chat-header">
+              <div class="wa-avatar">
+                K
+              </div>
+
+              <div>
+                <strong>Kato's Agenda</strong>
+                <small>online</small>
+              </div>
+            </div>
+
+            <div class="wa-chat-body">
+
+              <div class="wa-day">
+                Hoje
+              </div>
+
+              <div class="wa-message wa-message-1">
+                <p>
+                  Olá, Erik. Seu horário está confirmado para hoje às 15:40.
+                </p>
+                <span>14:00</span>
+              </div>
+
+              <div class="wa-message wa-message-2">
+                <p>
+                  Serviço: Corte + barba<br>
+                  Profissional: Rafael
+                </p>
+                <span>14:00</span>
+              </div>
+
+              <div class="wa-message wa-message-3">
+                <p>
+                  Seu compromisso sera daqui 1h.
+                </p>
+                <span>14:40</span>
+              </div>
+
+              <div class="wa-typing" aria-hidden="true">
+                <i></i><i></i><i></i>
+              </div>
+
+            </div>
+
+            <div class="wa-input-fake">
+              <span>Mensagem</span>
+              <span class="wa-send">➤</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="wa-mini-card wa-mini-card-1">
+          <strong>15:40</strong>
+          <span>Erik • Corte + barba</span>
+        </div>
+
+        <div class="wa-mini-card wa-mini-card-2">
+          <span class="wa-check">✓</span>
+          <div>
+            <strong>Lembrete enviado</strong>
+            <span>automaticamente</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PLANOS -->
 
     <section
 
